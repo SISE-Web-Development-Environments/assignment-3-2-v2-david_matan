@@ -26,7 +26,7 @@ mounted() {
 methods:{
   async getRandomRecipe(){
     try{
-        const response = await this.axios.get("http://localhost:3000/api/recipes/random")
+        const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/recipes/random")
         const recipesFromServer = response.data
         this.randomRecipes=[]
         this.randomRecipes.push(...recipesFromServer)

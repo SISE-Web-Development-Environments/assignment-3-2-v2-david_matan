@@ -29,7 +29,7 @@ export default {
     {
       try{
       this.recipesRes=[]
-      const result= await this.axios.get(`http://localhost:3000/api/recipes/search`, {
+      const result= await this.axios.get(`https://david-matan-recipe-api-server.herokuapp.com/api/recipes/search`, {
       params: {
         query: query,
         number: number,

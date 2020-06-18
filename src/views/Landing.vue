@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import LeftColumOut from '../src/components/LandingPage/UserOut/LeftColum/LeftColumnOut/LeftColumOut'
-import RightColumOut from '../src/components/LandingPage/UserOut/RightColumn/RightColumOut'
+import LeftColumOut from '../components/LandingPage/UserOut/LeftColum/LeftColumnOut/LeftColumOut'
+import RightColumOut from '../components/LandingPage/UserOut/RightColumn/RightColumOut'
 
 export default {
 name: 'Landing',

@@ -7,7 +7,8 @@ Vue.config.productionTip = false
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
- 
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 Vue.use(VueAxios, axios)
 
 import * as mdbvue from 'mdbvue'
@@ -30,7 +31,7 @@ library.add(faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // Import our routes
-import routes from "../src/routes";
+import routes from "./routes";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 const router = new VueRouter({

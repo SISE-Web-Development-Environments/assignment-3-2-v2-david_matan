@@ -1,7 +1,8 @@
 
 
-import Search from "../views/Search.vue"
-import Landing from "../views/Landing.vue"
+import Search from './views/Search.vue'
+import Landing from "./views/Landing.vue"
+import SignUp  from "./views/SignUp.vue"
 const routes = [
   {
     path: "/search",
@@ -12,6 +13,11 @@ const routes = [
     path: "/",
     name: "landing",
     component: Landing
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignUp
   }
 ];
 

@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import SearchBar from '../src/components/Search/SearchBar/SearchBar'
-import Result from '../src/components/Search/Result/Result'
+import SearchBar from '../components/Search/SearchBar/SearchBar'
+import Result from '../components/Search/Result/Result'
 
 export default {
   name:'Search',
@@ -69,7 +69,7 @@ export default {
 
 <style>
 body{
-  background: url("../src/assets/searchback.jpg") no-repeat center center fixed;
+  background: url("../assets/searchback.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

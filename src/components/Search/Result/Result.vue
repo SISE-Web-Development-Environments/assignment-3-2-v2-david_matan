@@ -36,9 +36,7 @@ export default {
     display:flex;
 }
 
-.preview{
 
-}
 
 .summary{
     color:white;

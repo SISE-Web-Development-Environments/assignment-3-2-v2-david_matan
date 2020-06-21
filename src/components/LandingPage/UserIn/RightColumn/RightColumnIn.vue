@@ -1,12 +1,17 @@
 <template>
 <span class="column-right-in">
-    <div class="wrap-last-watch">
-    <span v-for="recipe in this.lastWatchedRecipes" :key="recipe.id" class="recipes">
+    <div  v-if="lastWatchedRecipes.length!==0" class="wrap-last-watch">
+    <span  v-for="recipe in this.lastWatchedRecipes" :key="recipe.id" class="recipes">
                 <PreviewRecipe :recipe="recipe" />
     </span>
     </div>
     <div>
+        <span v-if="lastWatchedRecipes.length!==0">
         <h1  class="lastwatch">Hey {{$root.store.username}} ! Lets Remember your last Watched Recipes</h1>
+        </span>
+        <span v-else>
+        <NoResults :message="'You did not watch ane recipes yet!'"/>
+        </span>
         <div class="buttons">
              <div><button class="options" >Your Favorite</button></div>
              <div><button class="options" style="margin-top:5%; margin-bottom:5%">Your Family Recipes</button></div>
@@ -14,15 +19,21 @@
         </div>
     </div>
 </span>
-
 </template>
 
 <script>
 import PreviewRecipe from '../../../PreviewRecipe/PreviewRecipe'
+import NoResults from '../../../NoResults/NoResults'
 export default {
     name:'RightColumnIn',
+    data(){
+        return{
+            emptyError:false
+        }
+    },
     components:{
-          PreviewRecipe
+          PreviewRecipe,
+          NoResults
     },
     props: {
     lastWatchedRecipes: {

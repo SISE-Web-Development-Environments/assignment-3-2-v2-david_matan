@@ -1,0 +1,80 @@
+<template>
+<span class="column-right-in">
+    <div class="wrap-last-watch">
+    <span v-for="recipe in this.lastWatchedRecipes" :key="recipe.id" class="recipes">
+                <PreviewRecipe :recipe="recipe" />
+    </span>
+    </div>
+    <div>
+        <h1  class="lastwatch">Hey {{$root.store.username}} ! Lets Remember your last Watched Recipes</h1>
+        <div class="buttons">
+             <div><button class="options" >Your Favorite</button></div>
+             <div><button class="options" style="margin-top:5%; margin-bottom:5%">Your Family Recipes</button></div>
+             <div><button class="options" >Your Recipes</button></div>
+        </div>
+    </div>
+</span>
+
+</template>
+
+<script>
+import PreviewRecipe from '../../../PreviewRecipe/PreviewRecipe'
+export default {
+    name:'RightColumnIn',
+    components:{
+          PreviewRecipe
+    },
+    props: {
+    lastWatchedRecipes: {
+        type: Array,
+        required: true
+    },
+     
+}
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+.column-right-in{
+    display: inline-block;
+    width: 50%;
+    background: url('../../../../assets/2.jpg')  ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+.wrap-last-watch{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    float: right;
+}
+
+.lastwatch{
+     -webkit-text-stroke: 2px black;
+    -webkit-text-fill-color: white;
+    margin-top:30%;
+    font-size:55px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.options{
+  width: 200px;
+  height: 45px;
+  border:1px solid white;
+  color:white;
+  background:rgb(59, 189, 59);
+  border-radius: 5px;
+  font-family: 'Fjalla One', sans-serif;
+  outline: none;
+}
+.buttons{
+    left:0;
+    margin-top:2rem;
+    margin:2rem;
+}
+</style>

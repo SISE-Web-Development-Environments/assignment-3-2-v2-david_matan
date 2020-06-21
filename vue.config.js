@@ -2,10 +2,10 @@ module.exports = {
     devServer: {
       proxy: {
         '/api': {
-          target: 'http://localhost:8080',
+          target: '"https://david-matan-recipe-api-server.herokuapp.com/',
           ws: true,
           changeOrigin: true
         }
       }
     }
-  }
+  } 

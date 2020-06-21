@@ -16,16 +16,16 @@
 
 <script>
 import PreviewRecipe from '../../../../PreviewRecipe/PreviewRecipe'
-import Header from '../../LeftColum/LandingHeader/Header'
+import Header from '../../LeftColum/LeftColumnOut/LandingHeader/Header'
 
 
 export default {
     name: 'LeftColumOut',
-components: {
+    components: {
     PreviewRecipe,
     Header
   },
-props: {
+    props: {
     randomRecipes: {
         type: Array,
         required: true
@@ -37,11 +37,13 @@ props: {
 <style>
 .column-left{
 display: inline-block; 
-width: 66.66666%;
-background-image: url('../../../../../assets/3.jpeg') ;
-background-repeat: no-repeat;
-background-size:cover;
-height: 95vh;
+width: 75%;
+background: url('../../../../../assets/3.jpeg')  ;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+height: 100vh;
 }
 
 .landing {
@@ -54,6 +56,10 @@ position: relative;
 
 }
 
+.recipes{
+  width: 100%;
+  max-width: 1100px;
+}
 .morerecipes{
   width: 100px;
   height: 45px;
@@ -61,7 +67,8 @@ position: relative;
   color:white;
   background:rgb(59, 189, 59);
   border-radius: 5px;
-   font-family: 'Fjalla One', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
+  outline: none;
 }
 
 .morerecipes:hover{
@@ -69,7 +76,8 @@ position: relative;
   color:rgb(59, 189, 59);
 }
 
-
-
+.morerecipes:focus{
+  outline: none;;
+}
 
 </style>

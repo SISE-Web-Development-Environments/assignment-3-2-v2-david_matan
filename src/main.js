@@ -37,9 +37,31 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes
 });
+// Vue.prototype.$store = {
+//   login:false,
+//   username:""
+// }
+const shared_data = {
+  username: localStorage.username,
+  login(username) {
+    localStorage.setItem("username", username);
+    this.username = username;
+    console.log("login", this.username);
+  },
+  logout() {
+    console.log("logout");
+    localStorage.removeItem("username");
+    this.username = undefined;
+  }
+};
 
 
 new Vue({
+  data() {
+    return {
+      store:shared_data
+    };
+  },
   router,
   render: h => h(App),
 }).$mount('#app')

@@ -1,7 +1,9 @@
 <template>
   <span>
     <LeftColumOut :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
-    <RightColumOut/>
+    <span v-if="!this.$root.store.username">
+    <RightColumOut  />
+    </span>
   </span>
 </template>
 

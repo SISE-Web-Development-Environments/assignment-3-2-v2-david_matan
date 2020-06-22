@@ -78,8 +78,9 @@ export default {
           }
         );
         if(response.status==200){
-          // this.$router.push("/");
+          this.$root.store.login(this.username);
           this.incorrectAuth=false;
+          this.$router.push("/");
         }
         else if(response.status==400){
           this.incorrectAuth=true;

@@ -1,22 +1,22 @@
 <template>
   <span>
-  <SearchBar v-on:search="search"  v-on:clear="clear" />
-  <div class="results" >
-    <span v-if="!empty">
-      <span v-for="recipe in this.recipesRes" :key="recipe.id" class="recipes">
-              <Result :recipe="recipe" />
+    <SearchBar v-on:search="search"  v-on:clear="clear" />
+    <div class="results" >
+      <span v-if="!empty">
+        <span v-for="recipe in this.recipesRes" :key="recipe.id" class="recipes">
+                <Result :recipe="recipe" />
+        </span>
       </span>
-    </span>
-    <span v-else>
-      <NoResults :class="{noWatchRecipes: true}" :message="'There is no match for your request'"/>
-    </span>
-  </div>
+      <span v-else>
+        <NoResults :class="{noWatchRecipes: true}" :message="'There is no match for your request'"/>
+      </span>
+    </div>
   </span>
 </template>
 
 <script>
 import SearchBar from '../components/Search/SearchBar/SearchBar'
-import Result from '../components/Search/Result/Result'
+import Result from '../components/Search/SearchResult/SearchResult'
 import NoResults from '../components/NoResults/NoResults'
 
 export default {

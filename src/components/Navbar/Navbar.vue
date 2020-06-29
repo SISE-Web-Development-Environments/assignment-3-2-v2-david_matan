@@ -27,11 +27,11 @@
             height="30"
           /></mdb-dropdown-toggle>
           <mdb-dropdown-menu color="elegant">
-            <mdb-dropdown-item>Favorite Recipes</mdb-dropdown-item>
-            <router-link to="/myrecipes"><mdb-dropdown-item>My Private Recipe</mdb-dropdown-item></router-link>
-            <mdb-dropdown-item>My Family Recipe</mdb-dropdown-item>
+            <mdb-dropdown-item><router-link to="/myfavorite"> My Favorite Recipes </router-link></mdb-dropdown-item>
+            <mdb-dropdown-item><router-link to="/myrecipes">My Private Recipe</router-link></mdb-dropdown-item>
+           <mdb-dropdown-item> <router-link to="/myfamily">My Family Recipe</router-link></mdb-dropdown-item>
             <div class="dropdown-divider"></div>
-            <mdb-dropdown-item v-on:click="signout">Sign-out</mdb-dropdown-item>
+            <mdb-dropdown-item v-on:click="signout">  Sign-out</mdb-dropdown-item>
           </mdb-dropdown-menu>
         </mdb-dropdown>
         </mdb-navbar-nav>

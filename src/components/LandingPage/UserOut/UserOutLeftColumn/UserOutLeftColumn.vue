@@ -4,9 +4,9 @@
           <Header/>
           <div class="container">
             <div class="recipes">
-            <span v-for="recipe in this.randomRecipes" :key="recipe.id" class="recipes">
-                <PreviewRecipe :recipe="recipe" />
-            </span>
+              <span v-for="recipe in this.randomRecipes" :key="recipe.id" class="recipes">
+                <PreviewRecipe id="abc" :recipe="recipe" />
+              </span>
             </div>
         </div>
           <button class=morerecipes  v-on:click="$emit('randomrecipes')">Show more</button>
@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import PreviewRecipe from '../../../../PreviewRecipe/PreviewRecipe'
-import Header from '../../LeftColum/LeftColumnOut/LandingHeader/Header'
+import PreviewRecipe from '../../../../components/PreviewRecipe/PreviewRecipe'
+import Header from '../../UserOut/UserOutLeftColumn/UserOutLeftColumnHeading/UserOutLeftColumnHeading'
 
 
 export default {
@@ -38,7 +38,7 @@ export default {
 .column-left{
 display: inline-block; 
 width: 75%;
-background: url('../../../../../assets/3.jpeg')  ;
+background: url('../../../../assets/3.jpeg')  ;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -79,5 +79,6 @@ position: relative;
 .morerecipes:focus{
   outline: none;;
 }
+
 
 </style>

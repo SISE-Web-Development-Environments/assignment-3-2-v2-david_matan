@@ -1,13 +1,13 @@
 <template>
   <span>
       <div class="column-right">
-      <SignIn/>
-    </div>
+        <SignIn/>
+      </div>
   </span>
 </template>
 
 <script>
-import SignIn from '../RightColumn/Signin/LandingSignin'
+import SignIn from '../UserOutRightColumn/UserOutRightColumnSignIn/UserOutRightColumnSignIn'
 export default {
     name:'RightColumOut',
     components:{

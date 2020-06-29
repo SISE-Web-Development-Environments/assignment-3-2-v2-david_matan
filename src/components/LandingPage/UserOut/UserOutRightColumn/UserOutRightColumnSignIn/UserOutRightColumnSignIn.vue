@@ -19,7 +19,8 @@ export default {
   data() {
     return {
         username: "",
-        password: ""
+        password: "",
+        justForReload:""
    }
  },
  methods:{
@@ -35,9 +36,8 @@ export default {
         );
         console.log(response)
         this.$root.store.login(this.username)
-        this.getFavoritd()
-         window.location.reload()
-    
+        await this.getFavoritd()
+        this.$router.go(0);
       } catch (err) {
         console.log(err);
       }
@@ -46,7 +46,9 @@ export default {
       try{
         const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/profiles/myprofile")
         const userData = response.data
-        localStorage.setItem('favorite',JSON.stringify(userData.favoriteRecipe))
+        if(userData.favoriteRecipe==="")
+        userData.favoriteRecipe=[]
+        localStorage.setItem('favorites',JSON.stringify(userData.favoriteRecipe))
         localStorage.setItem('watch',JSON.stringify(userData.watchedRecipe))
       }
     catch(err)

@@ -40,14 +40,6 @@ const router = new VueRouter({
 
 const shared_data = {
   username: localStorage.username,
-  favorites: localStorage.favorites,
-  watchHistory(historyWatch){
-    localStorage.setItem("watch",historyWatch)
-    },
-  addFavorites(favoritesObject){
-  localStorage.setItem("favorites",favoritesObject)
-  this.favorites=favoritesObject
-  },
   login(username){
     localStorage.setItem("username",username)
     this.username = username;

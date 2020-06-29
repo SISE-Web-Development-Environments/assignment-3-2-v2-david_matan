@@ -1,21 +1,21 @@
 <template>
 <span class="column-right-in">
     <div  v-if="lastWatchedRecipes.length!==0" class="wrap-last-watch">
-    <span  v-for="recipe in this.lastWatchedRecipes" :key="recipe.id" class="recipes">
-                <PreviewRecipe :recipe="recipe" />
-    </span>
+        <span  v-for="recipe in this.lastWatchedRecipes" :key="recipe.id" class="recipes">
+            <PreviewRecipe :recipe="recipe" />
+        </span>
     </div>
     <div>
         <span v-if="lastWatchedRecipes.length!==0">
-        <h1  class="lastwatch">Hey {{$root.store.username}} ! Lets Remember your last Watched Recipes</h1>
+            <h1  class="lastwatch">Hey {{$root.store.username}} ! Lets Remember your last Watched Recipes</h1>
         </span>
         <span v-else>
-        <NoResults :message="'You did not watch ane recipes yet!'"/>
+            <NoResults :message="'You did not watch ane recipes yet!'"/>
         </span>
         <div class="buttons">
-             <div><button class="options" >Your Favorite</button></div>
-             <div><button class="options" style="margin-top:5%; margin-bottom:5%">Your Family Recipes</button></div>
-             <div><button class="options" >Your Recipes</button></div>
+             <div><router-link to="/myfavorite"><button class="options" >Your Favorite</button></router-link></div>
+             <div><router-link to="/myfamily"><button class="options" style="margin-top:5%; margin-bottom:5%">Your Family Recipes</button></router-link></div>
+             <div><router-link to="/myrecipes"><button class="options" >Your Recipes</button></router-link></div>
         </div>
     </div>
 </span>
@@ -23,22 +23,22 @@
 
 <script>
 import PreviewRecipe from '../../../PreviewRecipe/PreviewRecipe'
-import NoResults from '../../../NoResults/NoResults'
+import NoResults from '../../../NoResults/NoResults';
 export default {
     name:'RightColumnIn',
     data(){
-        return{
-            emptyError:false
+    return{
+        emptyError:false
         }
     },
     components:{
-          PreviewRecipe,
-          NoResults
+        PreviewRecipe,
+        NoResults
     },
     props: {
-    lastWatchedRecipes: {
-        type: Array,
-        required: true
+        lastWatchedRecipes: {
+            type: Array,
+            required: true
     },
      
 }
@@ -66,7 +66,7 @@ export default {
 }
 
 .lastwatch{
-     -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 2px black;
     -webkit-text-fill-color: white;
     margin-top:30%;
     font-size:55px;
@@ -74,13 +74,16 @@ export default {
 }
 
 .options{
-  width: 200px;
-  height: 45px;
-  border:1px solid white;
-  color:white;
-  background:rgb(59, 189, 59);
-  border-radius: 5px;
-  font-family: 'Fjalla One', sans-serif;
+    width: 200px;
+    height: 45px;
+    border:1px solid white;
+    color:white;
+    background:rgb(59, 189, 59);
+    border-radius: 5px;
+    font-family: 'Fjalla One', sans-serif;
+    outline: none;
+}
+.options:focus{
   outline: none;
 }
 .buttons{

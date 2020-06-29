@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import LeftColumOut from '../components/LandingPage/UserOut/LeftColum/LeftColumnOut/LeftColumOut'
-import RightColumOut from '../components/LandingPage/UserOut/RightColumn/RightColumOut'
-import RightColumIn from '../components/LandingPage/UserIn/RightColumn/RightColumnIn'
-import LeftColumnIn from '../components/LandingPage/UserIn/LefoColumnIn/LeftColumIn'
+import LeftColumOut from '../components/LandingPage/UserOut/UserOutLeftColumn/UserOutLeftColumn'
+import RightColumOut from '../components/LandingPage/UserOut/UserOutRightColumn/RightColumOut'
+import RightColumIn from '../components/LandingPage/UserIn/UserInRightColumn/UserInRightColumn'
+import LeftColumnIn from '../components/LandingPage/UserIn/UserInLeftColumn/UserInLeftColumn'
 
 export default {
 name: 'Landing',
@@ -55,16 +55,18 @@ methods:{
   },
   async getLastWatchRecipe(){
     try{
+      console.log('abb')
       const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/profiles/lastwatch")
       const recipesFromServer = response.data
       this.lastWatchedRecipes=recipesFromServer
-      console.log(this.lastWatchedRecipes)
+    
     }
     catch(err){
-      if(err.response.status==='401'){
+      if(err.response.status===401){
                this.$root.store.username=undefined
                this.$router.push('/')
-             }
+    }
+        console.log(err.response)
     }
   }
 }}

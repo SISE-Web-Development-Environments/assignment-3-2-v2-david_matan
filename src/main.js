@@ -25,9 +25,9 @@ Vue.use(IconsPlugin)
 
 // Import FontAwsome
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf} from '@fortawesome/free-solid-svg-icons'
+import { faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf,faEye,faStar} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf)
+library.add(faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf,faEye,faStar)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // Import our routes
@@ -41,27 +41,50 @@ const router = new VueRouter({
 //   login:false,
 //   username:""
 // }
+// const shared_data = {
+//   username: localStorage.username,
+//   login(username) {
+//     localStorage.setItem("username", username);
+//     this.username = username;
+//     console.log("login", this.username);
+//   },
+//   logout() {
+//     console.log("logout");
+//     localStorage.removeItem("username");
+//     this.username = undefined;
+//   }
+// };
+
+
 const shared_data = {
   username: localStorage.username,
-  login(username) {
-    localStorage.setItem("username", username);
-    this.username = username;
-    console.log("login", this.username);
+  favorites: localStorage.favorites,
+  watchHistory(historyWatch){
+    localStorage.setItem("watch",historyWatch)
+    },
+  addFavorites(favoritesObject){
+  localStorage.setItem("favorites",favoritesObject)
+  this.favorites=favoritesObject
   },
-  logout() {
-    console.log("logout");
+  login(username){
+    localStorage.setItem("username",username)
+    this.username = username;
+  },
+  logout(){
     localStorage.removeItem("username");
-    this.username = undefined;
+    localStorage.removeItem("favorites");
+    localStorage.removeItem("watch");
   }
-};
+  };
 
+axios.defaults.withCredentials = true;
 
 new Vue({
-  data() {
-    return {
+  router,
+  data(){
+    return{
       store:shared_data
     };
   },
-  router,
   render: h => h(App),
 }).$mount('#app')

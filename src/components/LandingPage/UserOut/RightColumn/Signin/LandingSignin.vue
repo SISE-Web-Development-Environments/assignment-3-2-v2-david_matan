@@ -66,21 +66,22 @@ export default {
               }  
   },
  methods:{
-  async login(){
+  async login(e){
       try {
-        console.log(this.username)
-        console.log(this.password)
+        e.preventDefault()
         const response = await this.axios.post(
           "https://david-matan-recipe-api-server.herokuapp.com/api/auth",
           {
             username: this.username,
             password: this.password
-          }
+          },
         );
         if(response.status==200){
           this.$root.store.login(this.username);
+          this.getFavoritd()
+          window.location.reload()
           this.incorrectAuth=false;
-          this.$router.push("/");
+          // this.$router.push("/");
         }
         else if(response.status==400){
           this.incorrectAuth=true;
@@ -91,7 +92,20 @@ export default {
         this.error.push(err.response);
         console.log(err.response);
       }
-  }
+      
+  },
+  async getFavoritd(){
+      try{
+        const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/profiles/myprofile")
+        const userData = response.data
+        localStorage.setItem('favorite',JSON.stringify(userData.favoriteRecipe))
+        localStorage.setItem('watch',JSON.stringify(userData.watchedRecipe))
+      }
+    catch(err)
+    {
+      console.log(err)
+    }
+}
 }
 }
 </script>
@@ -107,11 +121,12 @@ export default {
 
 .sign-in-form{
     width: 300px;
-    margin:20vh auto ;
+    margin-top:50%;
+    margin-left:5%;
+    margin:5vh auto;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.6);
     background: rgba(160, 160, 160, 0.5);
     padding: 20px;
-    text-align: center;
     border-radius: 30px;
 }
 
@@ -123,6 +138,7 @@ export default {
 
 .input-box
 {
+   text-align: center;
     border-radius: 20px;
     padding: 7px;
     margin: 10px 0;

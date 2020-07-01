@@ -44,7 +44,7 @@ export default {
         NoResults,
         GreenButton
     },
-    mounted() {
+    created() {
     this.getFavoriteRecipes();
     },
     methods: {

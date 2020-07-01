@@ -4,12 +4,12 @@
         <div class="myrecipetitle"><h1>Your Family Recipes</h1></div>
         <img class="img" src="../assets/familyjpg.jpg" alt="Avatar">
         <div class="wrap">
-            <div >
-                <button class="profbtn">My Favorite Recipe<router-link to="/myfavorite"></router-link></button>
-            </div>
-            <div>
-                <button class="profbtn">My Private  Recipe<router-link to="/myrecipes"></router-link></button>
-            </div>
+                <div >
+           <GreenButton type="My Favorite Recipe"/>
+    </div>
+    <div>
+           <GreenButton type="My Private Recipe"/>
+    </div>
         </div>
     </div>
     <div class="right">
@@ -29,6 +29,8 @@
 <script>
 import Result from '../components/Search/SearchResult/SearchResult'
 import NoResults from '../components/NoResults/NoResults'
+import GreenButton from '../components/GreenButton/GreenButton'
+
 export default {
     name: 'MyPrivate',
     data() {
@@ -38,7 +40,8 @@ export default {
     },
     components:{
         Result,
-        NoResults
+        NoResults,
+        GreenButton
     },
     mounted() {
         this.getProfileRecipe();

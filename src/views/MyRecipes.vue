@@ -5,10 +5,10 @@
     <img class="img" src="../assets/profile.jpg" alt="Avatar">
     <div class="wrap">
     <div >
-            <button class="profbtn">My Favorite Recipe<router-link to="/register"></router-link></button>
+        <GreenButton type="My Favorite Recipe"/>
     </div>
     <div>
-            <button class="profbtn">My Family  Recipe<router-link to="/register"></router-link></button>
+       <GreenButton type="My Family Recipe"/>
     </div>
     </div>
     </div>
@@ -31,6 +31,7 @@
 <script>
 import Result from '../components/Search/SearchResult/SearchResult'
 import NoResults from '../components/NoResults/NoResults'
+import GreenButton from '../components/GreenButton/GreenButton'
 export default {
     name: 'MyPrivate',
     data() {
@@ -40,7 +41,8 @@ export default {
     },
     components:{
         Result,
-        NoResults
+        NoResults,
+        GreenButton
     },
     mounted() {
     this.getProfileRecipe();
@@ -56,7 +58,7 @@ export default {
            }
            catch(err)
            {
-             if(err.response.status==='401'){
+             if(err.response.status===401){
                  this.$root.store.username=undefined
                this.$router.push('/search')
              }
@@ -96,17 +98,7 @@ export default {
     border:2px solid white;
 }
 
-.profbtn{
-    margin-bottom: 1rem;
-    width: 150px;
-    height: 45px;
-    border:1px solid white;
-    color:white;
-    background:rgb(59, 189, 59);
-    border-radius: 5px;
-    font-family: 'Fjalla One', sans-serif;
-    outline: none;
-}
+
 .wrap{
     margin-top:2rem;
     margin-left:2rem

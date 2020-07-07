@@ -1,19 +1,15 @@
 
 
-<<<<<<< HEAD
+
 import Search from './views/Search.vue'
 import Landing from "./views/Landing.vue"
 import SignUp  from "./views/SignUp.vue"
 import MyRecipes from  "./views/MyRecipes.vue"
 import Login from  "./views/Login.vue"
-=======
-import Search from "../src/views/Search.vue"
-import Landing from "../src/views/Landing.vue"
-import MyRecipes from  "../src/views/MyRecipes.vue"
-import MyFamilyRecipe from  "../src/views/MyFamilyRecipe.vue"
-import MyFavoriteRecipe from '../src/views/MyFavoriteRecipe.vue'
-import Recipe from "../src/views/Recipe.vue"
->>>>>>> 152cfe58155063d277f2e3044cd1d64aa2d0cb96
+import MyFamilyRecipe from  "./views/MyFamilyRecipe.vue"
+import MyFavoriteRecipe from './views/MyFavoriteRecipe.vue'
+import Recipe from "./views/Recipe.vue"
+
 const routes = [
   {
     path: "/search",
@@ -36,11 +32,11 @@ const routes = [
     component: MyRecipes
   },
   {
-<<<<<<< HEAD
     path: "/login",
     name: "login",
     component: Login
-=======
+  },
+  {
     path: "/myfamily",
     name: "myfamily",
     component: MyFamilyRecipe
@@ -54,7 +50,6 @@ const routes = [
     path: "/recipe/:type/:id",
     name: "recipe",
     component: Recipe
->>>>>>> 152cfe58155063d277f2e3044cd1d64aa2d0cb96
   }
   
 ];

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SignIn from '../components/LandingPage/UserOut/RightColumn/Signin/LandingSignin'
+import SignIn from '../components/SingUpComp'
 export default {
     name: 'Login',
     components:{

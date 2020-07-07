@@ -44,8 +44,12 @@ export default {
     return {
         username: "",
         password: "",
+<<<<<<< HEAD:src/components/LandingPage/UserOut/RightColumn/Signin/LandingSignin.vue
         error: [],
         incorrectAuth:false
+=======
+        justForReload:""
+>>>>>>> 152cfe58155063d277f2e3044cd1d64aa2d0cb96:src/components/LandingPage/UserOut/UserOutRightColumn/UserOutRightColumnSignIn/UserOutRightColumnSignIn.vue
    }
  },
  validations:{
@@ -76,6 +80,7 @@ export default {
             password: this.password
           },
         );
+<<<<<<< HEAD:src/components/LandingPage/UserOut/RightColumn/Signin/LandingSignin.vue
         if(response.status==200){
           this.$root.store.login(this.username);
           this.getFavoritd()
@@ -88,6 +93,12 @@ export default {
           console.log(response.body)
         }
         console.log(response.body);
+=======
+        console.log(response)
+        this.$root.store.login(this.username)
+        await this.getFavoritd()
+        this.$router.go(0);
+>>>>>>> 152cfe58155063d277f2e3044cd1d64aa2d0cb96:src/components/LandingPage/UserOut/UserOutRightColumn/UserOutRightColumnSignIn/UserOutRightColumnSignIn.vue
       } catch (err) {
         this.error.push(err.response);
         console.log(err.response);
@@ -98,7 +109,9 @@ export default {
       try{
         const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/profiles/myprofile")
         const userData = response.data
-        localStorage.setItem('favorite',JSON.stringify(userData.favoriteRecipe))
+        if(userData.favoriteRecipe==="")
+        userData.favoriteRecipe=[]
+        localStorage.setItem('favorites',JSON.stringify(userData.favoriteRecipe))
         localStorage.setItem('watch',JSON.stringify(userData.watchedRecipe))
       }
     catch(err)

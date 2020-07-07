@@ -11,6 +11,15 @@ import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
 Vue.use(VueAxios, axios)
 
+import PrettyInput from 'pretty-checkbox-vue/input';
+    import PrettyCheck from 'pretty-checkbox-vue/check';
+    import PrettyRadio from 'pretty-checkbox-vue/radio';
+
+    Vue.component('p-input', PrettyInput);
+    Vue.component('p-check', PrettyCheck);
+    Vue.component('p-radio', PrettyRadio);
+
+
 import * as mdbvue from 'mdbvue'
 for (const component in mdbvue) {
 Vue.component(component, mdbvue[component])
@@ -58,14 +67,6 @@ const router = new VueRouter({
 
 const shared_data = {
   username: localStorage.username,
-  favorites: localStorage.favorites,
-  watchHistory(historyWatch){
-    localStorage.setItem("watch",historyWatch)
-    },
-  addFavorites(favoritesObject){
-  localStorage.setItem("favorites",favoritesObject)
-  this.favorites=favoritesObject
-  },
   login(username){
     localStorage.setItem("username",username)
     this.username = username;

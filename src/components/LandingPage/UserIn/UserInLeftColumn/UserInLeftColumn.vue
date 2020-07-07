@@ -1,9 +1,9 @@
 <template>
 <span class="column-left-in">
     <div class="wrap-last-left">
-    <span v-for="recipe in this.randomRecipes" :key="recipe.id" class="recipes">
-                <PreviewRecipe :recipe="recipe" />
-    </span>
+        <span v-for="recipe in this.randomRecipes" :key="recipe.id" class="recipes">
+            <PreviewRecipe :recipe="recipe" />
+        </span>
     </div>
     <div>
         <h1  class="lastwatch" style="color:green">Explore This Recipes</h1>
@@ -18,12 +18,12 @@ import PreviewRecipe from '../../../PreviewRecipe/PreviewRecipe'
 export default {
     name:'LeftColumnIn',
     components:{
-    PreviewRecipe
+        PreviewRecipe
     },
-      props: {
-    randomRecipes: {
-        type: Array,
-        required: true
+    props: {
+        randomRecipes: {
+            type: Array,
+            required: true
       }
 }
 }

@@ -26,7 +26,7 @@
         <input  type="submit" class='signin-btn' value="Sign in" v-on:click="login" :disabled="clickable"  >
         <p id="errorAlert" role="alert" v-if="error.length>0">Sorry, your password was incorrect. Please double-check your password. </p>
         <hr>
-        <p>Do you not have an account?<router-link to="/signup"> Sign up</router-link></p>
+        <p>Do you not have an account?  <router-link style="color:blue;text-decoration: underline blue;" to="/signup">Sign up</router-link></p>
         </form>
     </div>
   </span>

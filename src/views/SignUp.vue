@@ -1,6 +1,6 @@
 <template>
 <div>
-  <SignUpComp></SignUpcomp>
+  <SignUpComp class="center"></SignUpcomp>
   </div>
   
 </template>
@@ -17,5 +17,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>

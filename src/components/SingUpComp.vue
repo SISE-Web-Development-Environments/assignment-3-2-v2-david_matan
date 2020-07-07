@@ -90,6 +90,26 @@
             </span>
           </div>
         </div>
+            <div class="form-row">
+          <label for="profileURL">profile picture</label>
+          <input
+            class="form-control"
+            type="url"
+            placeholder="Enter profile URL"
+            v-model.trim="$v.profile.$model"
+            :class="{'is-invalid': $v.profile.$error,  'is-valid': !$v.profile.$invalid }"
+          />
+          <div class="invalid-feedback">
+            <span v-if="!$v.profile.required">
+              profile url is required.
+              <br />
+            </span>
+            <span v-if="!$v.profile.email">
+              The url address field is not a valid url address.
+              <br />
+            </span>
+          </div>
+        </div>
         <div class="form-row">
           <label class="my-1 mr-2" for="countrySelect">Country</label>
           <select
@@ -160,7 +180,8 @@ import {
   minLength,
   sameAs,
   alpha,
-  email
+  email,
+  url
 } from "vuelidate/lib/validators";
 let countries = require("../countries.json");
 const mustWithNumSL = value =>
@@ -176,6 +197,7 @@ export default {
       password: "",
       repassword: "",
       email: "",
+      profile:"",
       country: ""
     };
   },
@@ -197,6 +219,10 @@ export default {
       required,
       email
     },
+    profile:{
+      required,
+      url
+    },
     country: {
       required
     },
@@ -212,6 +238,8 @@ export default {
     }
   },
   methods: {async submit(){
+          this.$v.$touch()
+     if (!this.$v.$invalid) {
    try {
         console.log(this.username)
         console.log(this.password)
@@ -229,7 +257,7 @@ export default {
             lastname: this.lastname,
             country: this.country,
             confirmpassword: this.repassword,
-            url:'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            url:this.profile
           }
         );
         if( response.status==200){this.$router.push("/");}
@@ -244,13 +272,14 @@ export default {
       }
   }
   }
+  }
 }
 </script>
 
 <style>
 .sign-up-form {
   width: 300px;
-  margin: 20vh auto;
+  margin: 10vh auto;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
   background: rgba(160, 160, 160, 0.5);
   padding: 20px;
@@ -266,7 +295,7 @@ export default {
 
 /* Clear floats after the columns */
 
-.input-box {
+.form-control {
   border-radius: 20px;
   padding: 7px;
   margin: 1px 0;

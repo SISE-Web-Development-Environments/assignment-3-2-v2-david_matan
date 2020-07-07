@@ -6,8 +6,8 @@
     <mdb-navbar-nav left v-if=!$root.store.username>
      <mdb-nav-item class="seperator" id=a href="#" active><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
         <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span>About</mdb-nav-item>
-           <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="sign-in-alt"/></span>Login</mdb-nav-item>
-        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span>Register</mdb-nav-item>
+           <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="sign-in-alt"/></span><router-link to="/login">Login</router-link></mdb-nav-item>
+        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/signup">Register</router-link></mdb-nav-item>
     </mdb-navbar-nav>
     <mdb-navbar-nav left v-else>
      <mdb-nav-item class="seperator" id=a href="#" active><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
@@ -18,7 +18,7 @@
         <mdb-nav-item class="seperator" >Hi Guest !</mdb-nav-item>
       </mdb-navbar-nav>
         <mdb-navbar-nav right v-else>
-        <mdb-nav-item class="seperator" style="margin-top:3px" >Hi dav1992 !</mdb-nav-item>
+        <mdb-nav-item class="seperator" style="margin-top:3px" >Hi {{$root.store.username }} !</mdb-nav-item>
            <mdb-dropdown tag="li" class="nav-item" >
           <mdb-dropdown-toggle tag="a" navLink slot="toggle" waves-fixed><img
             src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
@@ -61,7 +61,7 @@ span{
 .seperator{
     display: inline;
     margin-right: 1rem;
-  margin-top:3px;
+    margin-top: 3px;
     filter: drop-shadow(0.5px 12px 15.5px rgb(255, 255, 255));
 }
 </style>

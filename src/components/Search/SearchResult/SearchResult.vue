@@ -36,7 +36,7 @@ export default {
 }
 
 .userecipesummery{
-    height:320px;
+    height:100%;
     width:80%;
     border-radius: 15px;
     background: rgba(0,0,0,0.6);

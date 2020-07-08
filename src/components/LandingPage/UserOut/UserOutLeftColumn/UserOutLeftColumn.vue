@@ -5,12 +5,12 @@
           <div class="container">
             <div class="recipes">
               <span v-for="recipe in this.randomRecipes" :key="recipe.id" class="recipes">
-                <PreviewRecipe id="abc" :recipe="recipe" />
+                           <router-link :to="{ name: 'recipe', params: {type:recipe.type,id: recipe.id}}"><PreviewRecipe id="abc" :recipe="recipe" /></router-link>
               </span>
             </div>
+             <button class=morerecipes  v-on:click="$emit('randomrecipes')">Show more</button>
         </div>
-          <button class=morerecipes  v-on:click="$emit('randomrecipes')">Show more</button>
-      </div>
+        </div>
    </div>
 </template>
 

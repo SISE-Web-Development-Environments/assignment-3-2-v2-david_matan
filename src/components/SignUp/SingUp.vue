@@ -2,8 +2,12 @@
   <span>
     <div class="sign-up-form">
       <form>
+        <h1 style="text-align:left;">Sign Up</h1>
         <div class="form-row">
-          <label for="username">Username</label>
+          <div class="block">
+          <label for="username">Username:</label>
+          <div class=inline>
+          <font-awesome-icon class=iconreg icon="user-secret"/>
           <input
             class="form-control"
             type="text"
@@ -11,6 +15,8 @@
             :class="{'is-invalid': $v.username.$error,  'is-valid': !$v.username.$invalid }"
             placeholder="Enter User Name"
           />
+          </div>
+          </div>
           <div class="invalid-feedback">
             <span v-if="!$v.username.required">
               User name is required.
@@ -31,7 +37,10 @@
           </div>
         </div>
         <div class="form-row">
-          <label>First Name</label>
+          <div class="block">
+          <label>First Name:</label>
+          <div class=inline>
+          <font-awesome-icon class=iconreg icon="user"/>
           <input
             class="form-control"
             type="text"
@@ -39,6 +48,7 @@
             :class="{'is-invalid': $v.firstname.$error,  'is-valid': !$v.firstname.$invalid }"
             placeholder="Enter First Name"
           />
+          </div>
           <div class="invalid-feedback">
             <span v-if="!$v.firstname.required">
               Firstname is required.
@@ -50,8 +60,12 @@
             </span>
           </div>
         </div>
+        </div>
         <div class="form-row">
-          <label>Last Name</label>
+          <div class="block">
+          <label>Last Name:</label>
+          <div class=inline>
+            <font-awesome-icon class=iconreg icon="user-edit"/>
           <input
             class="form-control"
             type="text"
@@ -59,6 +73,8 @@
             :class="{'is-invalid': $v.lastname.$error,  'is-valid': !$v.lastname.$invalid }"
             placeholder="Enter Last Name"
           />
+           </div>
+           </div>
           <div class="invalid-feedback">
             <span v-if="!$v.lastname.required">
               Lastname is required.
@@ -71,7 +87,10 @@
           </div>
         </div>
         <div class="form-row">
-          <label for="email">Email address</label>
+           <div class="block">
+          <label for="email">Email address:</label>
+          <div class=inline>
+            <font-awesome-icon class=iconreg icon="envelope"/>
           <input
             class="form-control"
             type="email"
@@ -79,6 +98,8 @@
             v-model.trim="$v.email.$model"
             :class="{'is-invalid': $v.email.$error,  'is-valid': !$v.email.$invalid }"
           />
+          </div>
+           </div>
           <div class="invalid-feedback">
             <span v-if="!$v.email.required">
               Email is required.
@@ -90,15 +111,20 @@
             </span>
           </div>
         </div>
-            <div class="form-row">
-          <label for="profileURL">profile picture</label>
-          <input
+          <div class="form-row">
+          <div class="block">
+          <label for="profileURL">Profile picture:</label>
+          <div class=inline>
+            <font-awesome-icon class=iconreg icon="image"/>
+            <input
             class="form-control"
             type="url"
             placeholder="Enter profile URL"
             v-model.trim="$v.profile.$model"
             :class="{'is-invalid': $v.profile.$error,  'is-valid': !$v.profile.$invalid }"
           />
+          </div>
+          </div>
           <div class="invalid-feedback">
             <span v-if="!$v.profile.required">
               profile url is required.
@@ -111,7 +137,10 @@
           </div>
         </div>
         <div class="form-row">
+           <div class="block">
           <label class="my-1 mr-2" for="countrySelect">Country</label>
+           <div class=inline>
+            <font-awesome-icon class=iconreg icon="globe-americas"/>
           <select
             class="form-control"
             v-model.trim="$v.country.$model"
@@ -120,9 +149,14 @@
             <option value disabled selected>Select your country</option>
             <option v-for="c in countryList" :key="c.name">{{ c.name }}</option>
           </select>
+           </div>
+           </div>
         </div>
         <div class="form-row">
-          <label for="password">password</label>
+           <div class="block">
+          <label for="password">Password:</label>
+            <div class=inline>
+            <font-awesome-icon class=iconreg icon="lock"/>
           <input
             class="form-control"
             type="password"
@@ -130,6 +164,8 @@
             v-model.trim="$v.password.$model"
             :class="{'is-invalid': $v.password.$error,  'is-valid': !$v.password.$invalid }"
           />
+            </div>
+           </div>
           <div class="invalid-feedback">
             <span v-if="!$v.password.required">
               Password is required.
@@ -147,7 +183,10 @@
           </div>
         </div>
         <div class="form-row">
-          <label for="password">Confirmation Password</label>
+           <div class="block">
+          <label for="password">Confirmation Password:</label>
+            <div class=inline>
+            <font-awesome-icon class=iconreg icon="lock"/>
           <input
             class="form-control"
             type="password"
@@ -155,6 +194,8 @@
             v-model.trim="$v.repassword.$model"
             :class="{'is-invalid': $v.repassword.$error,  'is-valid': !$v.repassword.$invalid }"
           />
+            </div>
+           </div>
           <div class="invalid-feedback">
             <span v-if="!$v.repassword.required">
               Confirmation password is required.
@@ -167,7 +208,7 @@
           </div>
         </div>
 
-        <button type="submit" v-on:click="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" v-on:click="submit" class="submitbutton">Submit</button>
       </form>
     </div>
   </span>
@@ -183,11 +224,11 @@ import {
   email,
   url
 } from "vuelidate/lib/validators";
-let countries = require("../countries.json");
+let countries = require("../../countries.json");
 const mustWithNumSL = value =>
   /\d/.test(value) && /[-!$%^&*()_+|~=`{}[:;<>?,.@#\]]/g.test(value);
 export default {
-  name: "SignUpcomp",
+  name: "SignUp",
   data() {
     return {
       countryList: countries,
@@ -237,40 +278,32 @@ export default {
       sameAsPassword: sameAs("password")
     }
   },
-  methods: {async submit(){
-          this.$v.$touch()
-     if (!this.$v.$invalid) {
-   try {
-        console.log(this.username)
-        console.log(this.password)
-        console.log(this.country)
-        console.log(this.email)
-        console.log(this.firstname)
-        console.log(this.lastname)
-        const response = await this.axios.post(
-          "https://david-matan-recipe-api-server.herokuapp.com/api/users/",
-          {
-            username: this.username,
-            password: this.password,
-            email: this.email,
-            firstname: this.firstname,
-            lastname: this.lastname,
-            country: this.country,
-            confirmpassword: this.repassword,
-            url:this.profile
-          }
-        );
-        if( response.status==200){this.$router.push("/");}
-        else if(response.status==400){
-          console.log(response.body)
+  methods: {
+   async submit(e){
+     e.preventDefault()
+    this.$v.$touch()
+    if (!this.$v.$invalid) {
+    try {
+          const response = await this.axios.post(
+            "https://david-matan-recipe-api-server.herokuapp.com/api/users/",
+            {
+              username: this.username,
+              password: this.password,
+              email: this.email,
+              firstname: this.firstname,
+              lastname: this.lastname,
+              country: this.country,
+              confirmpassword: this.repassword,
+              url:this.profile
+            }
+          );
+          localStorage.setItem('profile',url)
+          if( response.status===200)
+          {this.$router.push("/login");}
+        } catch (err) {
+          console.log(err.response);
         }
-        console.log(response);
-      } catch (err) {
-
-        
-        console.log(err.response);
-      }
-  }
+    }
   }
   }
 }
@@ -278,7 +311,7 @@ export default {
 
 <style>
 .sign-up-form {
-  width: 300px;
+  width: 500px;
   margin: 10vh auto;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
   background: rgba(160, 160, 160, 0.5);
@@ -299,8 +332,46 @@ export default {
   border-radius: 20px;
   padding: 7px;
   margin: 1px 0;
-  width: 100%;
+  width: 300px;
   border: 1px solid #999;
   outline: none;
+  margin-left:2rem;
 }
+
+.block{
+  display: block;
+  text-align: left;
+}
+
+label{
+  color:white;
+}
+
+.submitbutton{
+  float: left;
+  margin-top:2rem;
+  width: 150px;
+  height: 45px;
+  border:1px solid white;
+  color:white;
+  background:rgb(59, 189, 59);
+  border-radius: 5px;
+  font-family: 'Fjalla One', sans-serif;
+  outline: none;
+}
+
+.submitbutton:focus{
+  outline: none;
+}
+.inline{
+  display: flex;
+}
+
+.iconreg{
+  margin-top:5px;
+  font-size:1.5em;
+  color:white;
+}
+
+
 </style>

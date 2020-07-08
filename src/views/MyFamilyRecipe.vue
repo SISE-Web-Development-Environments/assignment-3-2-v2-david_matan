@@ -15,7 +15,7 @@
     <div class="right">
         <div class="results" v-if="this.familyRecipes.length!==0">
             <span v-for="recipe in this.familyRecipes" :key="recipe.id" class="recipes">
-                <Result :recipe="recipe" :class="{userecipesummery:true}" />
+                 <router-link :to="{ name: 'recipe', params: {type:recipe.type,id: recipe.id}}"><Result :recipe="recipe" :class="{userecipesummery:true}" /></router-link>
             </span>
         </div>
         <div  v-else>
@@ -51,13 +51,14 @@ export default {
            try{
                 this.myRecipes=[]
                 const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/recipes/familyrecipes",{withCredentials: true})
-                this.familyRecipes=response.data.recipes;
+                this.familyRecipes=response.data.preview;
+                console.log('asdasdad')
            }
            catch(err)
            {
-                if(err.response.status==='401'){
+                if(err.response.status===401){
                     this.$root.store.username=undefined
-                    this.$router.push('/search')
+                    this.$router.push('/login')
              }
            }
         }

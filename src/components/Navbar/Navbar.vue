@@ -21,7 +21,7 @@
         <mdb-nav-item class="seperator" style="margin-top:3px" >Hi {{$root.store.username }} !</mdb-nav-item>
            <mdb-dropdown tag="li" class="nav-item" >
           <mdb-dropdown-toggle tag="a" navLink slot="toggle" waves-fixed><img
-            src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
+            :src=$root.store.profilePicture
             class="rounded-circle z-depth-0"
             alt="avatar image"
             height="30"
@@ -41,7 +41,6 @@
 <style scoped>
 /* navigation bar */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
 #mynav{
 font-family: 'Noto Sans KR', sans-serif;   
 border-bottom: 1px outset white;
@@ -53,11 +52,9 @@ top:0;
 width:100vw;   
 z-index:200;  
 }
-
 span{
     margin-right: 10px;
 }
-
 .seperator{
     display: inline;
     margin-right: 1rem;
@@ -96,7 +93,6 @@ span{
         catch(err){
         console.log(err)
         }
-
       }
     }
   }

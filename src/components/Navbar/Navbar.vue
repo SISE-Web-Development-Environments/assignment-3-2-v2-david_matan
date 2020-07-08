@@ -5,13 +5,13 @@
     </mdb-navbar-brand>
     <mdb-navbar-nav left v-if=!$root.store.username>
      <mdb-nav-item class="seperator" id=a href="#" active><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
-        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span>About</mdb-nav-item>
+        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/about" >About</router-link></mdb-nav-item>
            <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="sign-in-alt"/></span><router-link to="/login">Login</router-link></mdb-nav-item>
         <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/signup">Register</router-link></mdb-nav-item>
     </mdb-navbar-nav>
     <mdb-navbar-nav left v-else>
      <mdb-nav-item class="seperator" id=a href="#" active><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
-        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span>About</mdb-nav-item>
+        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/about">About</router-link></mdb-nav-item>
     </mdb-navbar-nav>
     <mdb-navbar-toggler>
       <mdb-navbar-nav right v-if=!$root.store.username>

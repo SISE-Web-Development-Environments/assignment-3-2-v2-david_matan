@@ -8,7 +8,7 @@
             class="form-control"
             type="text"
             v-model.trim="$v.username.$model"
-            :class="{'is-invalid': $v.username.$error,  'is-valid': !$v.username.$invalid }"
+            :class="{'is-invalid': $v.username.$error || usernameUnavailable ,  'is-valid': !$v.username.$invalid }"
             placeholder="Enter User Name"
           />
           <div class="invalid-feedback">
@@ -28,6 +28,11 @@
               User name must between 3 to 8 letters
               <br />
             </span>
+                <span v-if='usernameUnavailable'>
+              User name unavailable choose differnt one 
+              <br />
+            </span>
+
           </div>
         </div>
         <div class="form-row">
@@ -77,7 +82,7 @@
             type="email"
             placeholder="Enter Email"
             v-model.trim="$v.email.$model"
-            :class="{'is-invalid': $v.email.$error,  'is-valid': !$v.email.$invalid }"
+            :class="{'is-invalid': $v.email.$error || emailUnavailable,  'is-valid': !$v.email.$invalid }"
           />
           <div class="invalid-feedback">
             <span v-if="!$v.email.required">
@@ -88,10 +93,14 @@
               The Email address field is not a valid e-mail address.
               <br />
             </span>
+              <span v-if="emailUnavailable">
+              The Email address already exsits.
+              <br />
+            </span>
           </div>
         </div>
             <div class="form-row">
-          <label for="profileURL">profile picture</label>
+          <label >profile picture</label>
           <input
             class="form-control"
             type="url"
@@ -104,7 +113,7 @@
               profile url is required.
               <br />
             </span>
-            <span v-if="!$v.profile.email">
+            <span v-if="!$v.profile.url">
               The url address field is not a valid url address.
               <br />
             </span>
@@ -185,19 +194,21 @@ import {
 } from "vuelidate/lib/validators";
 let countries = require("../countries.json");
 const mustWithNumSL = value =>
-  /\d/.test(value) && /[-!$%^&*()_+|~=`{}[:;<>?,.@#\]]/g.test(value);
+  /\d/.test(value) && /[-!$%^&*()_+|~=`{}[:;<>?,.@#\]]/g.test(value); 
 export default {
   name: "SignUpcomp",
   data() {
     return {
+      emailUnavailable:false,
+      usernameUnavailable:false,
       countryList: countries,
       username: "",
-      firstname: "",
-      lastname: "",
-      password: "",
-      repassword: "",
-      email: "",
-      profile:"",
+      firstname: "m",
+      lastname: "a",
+      password: "12345!",
+      repassword: "12345!",
+      email: "m@gmail.com",
+      profile:"https://github.com/SISE-Web-Development-Environments/assignment-3-2-v2-david_matan",
       country: ""
     };
   },
@@ -241,12 +252,6 @@ export default {
           this.$v.$touch()
      if (!this.$v.$invalid) {
    try {
-        console.log(this.username)
-        console.log(this.password)
-        console.log(this.country)
-        console.log(this.email)
-        console.log(this.firstname)
-        console.log(this.lastname)
         const response = await this.axios.post(
           "https://david-matan-recipe-api-server.herokuapp.com/api/users/",
           {
@@ -260,13 +265,17 @@ export default {
             url:this.profile
           }
         );
+    
         if( response.status==200){this.$router.push("/");}
-        else if(response.status==400){
-          console.log(response.body)
-        }
-        console.log(response);
       } catch (err) {
-
+        if(err.response.status == 404 && err.response.data.message=="User already exists"){
+          this.usernameUnavailable=true;
+          this.$v.$touch()
+        }
+        if (err.response.status == 404 && err.response.data.message=="Email already exists"){
+           this.emailUnavailable=true;
+          this.$v.$touch()
+        }
         
         console.log(err.response);
       }

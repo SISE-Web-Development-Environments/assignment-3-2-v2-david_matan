@@ -7,7 +7,7 @@
     <LeftColumOut :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
     </span>
     <span v-if=!this.$root.store.username>
-      <RightColumOut/>
+      <RightColumOut id="right_colum_out" />
     </span>
     <span v-else>
       <RightColumIn :lastWatchedRecipes="lastWatchedRecipes"/>
@@ -77,4 +77,10 @@ methods:{
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Fjalla+One&family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&family=Marck+Script&family=Merienda&family=Oleo+Script&display=swap');
+
+@media only screen and (max-width: 600px) {
+#right_colum_out{
+  display: none;
+}
+}
 </style>

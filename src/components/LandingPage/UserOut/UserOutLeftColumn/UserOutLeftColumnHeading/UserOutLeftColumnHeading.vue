@@ -7,11 +7,11 @@
           </p>
           </div>
           <div class="headerbuttons">
-       <router-link to="/search" >    <button class="searchbtn">Search</button></router-link>
-            <button class="signin">Sign Up<router-link to="/register"></router-link></button>
+       <router-link to="/search" ><button class="searchbtn">Search</button></router-link>
+            <button class="signin"><router-link to="/signup">Sign Up</router-link></button>
           </div>
     </div>
-</template>w
+</template>
 
 <script>
 export default {
@@ -24,7 +24,7 @@ export default {
   border:1px solid white;
   height: 35px;
   width:100px;
-  background: transparent;
+  background: rgb(59, 189, 59);
   color:white;
   margin-right: 35px;
    font-family: 'Fjalla One', sans-serif;

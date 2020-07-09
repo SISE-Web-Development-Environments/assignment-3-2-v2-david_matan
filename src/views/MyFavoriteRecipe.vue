@@ -2,7 +2,7 @@
   <div>
     <div class="left">
     <div class="myrecipetitle"><h1>Your Favorite Recipes</h1></div>
-    <img class="img" src="../assets/profile.jpg" alt="Avatar">
+    <img class="img" :src=$root.store.profilePicture alt="Avatar">
     <div class="wrap">
     <div >
            <GreenButton type="My Private Recipe"/>
@@ -76,8 +76,7 @@ export default {
            {
              if(err.response.status===401){
                  this.$root.store.username=undefined
-                 console.log('asd')
-                 this.$router.push('/')
+                 this.$router.push('/login')
              }
               console.log(err.response)
            }

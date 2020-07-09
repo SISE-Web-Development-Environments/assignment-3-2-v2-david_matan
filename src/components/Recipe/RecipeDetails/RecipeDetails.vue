@@ -17,7 +17,7 @@ export default {
         recipe:{
         type:Object,
         required:true
-    }
+    },
 }
 }
 </script>

@@ -9,7 +9,7 @@
                 <span style="font-size:25px">Hamburgesa</span>
             </router-link>
         </mdb-navbar-brand>
-        <mdb-navbar-toggler style="background:#212121">
+        <mdb-navbar-toggler style="background:#212121;" >
         <mdb-navbar-nav left v-if="!$root.store.username">
             <mdb-nav-item class="seperator" id="a" href="#" active>
                 <span>
@@ -52,7 +52,7 @@
         </mdb-navbar-nav>
         
             <mdb-navbar-nav right v-if="!$root.store.username">
-                <mdb-nav-item class="seperator">Hi Guest !</mdb-nav-item>
+                <mdb-nav-item  class="seperator">Hi Guest !</mdb-nav-item>
             </mdb-navbar-nav>
             <mdb-navbar-nav right v-else>
                 <mdb-nav-item
@@ -165,7 +165,6 @@ span {
         catch(err){
         console.log(err)
         }
-
       }
     }
   }

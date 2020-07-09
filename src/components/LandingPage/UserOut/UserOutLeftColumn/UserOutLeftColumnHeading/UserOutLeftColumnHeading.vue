@@ -27,7 +27,7 @@ export default {
   background: rgb(59, 189, 59);
   color:white;
   margin-right: 35px;
-   font-family: 'Fjalla One', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .searchbtn:hover{
@@ -58,13 +58,13 @@ export default {
   background: rgb(59, 189, 59);
   outline: none;
   cursor: pointer;
-   font-family: 'Fjalla One', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .header-desc{
-    color:black;
-    font-size: 1.5rem;
-   font-family: 'Roboto Slab', serif;
+  color:black;
+  font-size: 1.5rem;
+  font-family: 'Roboto Slab', serif;
 }
 
 .signin:hover{
@@ -82,9 +82,9 @@ export default {
 }
 
 .landing-inner {
-color: #fff;
-height: 100%;
-width: 80%;
-margin:auto
+  color: #fff;
+  height: 100%;
+  width: 80%;
+  margin:auto
 }
 </style>

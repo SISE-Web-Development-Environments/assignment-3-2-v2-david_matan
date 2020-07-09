@@ -65,13 +65,12 @@ export default {
      try{
        if(this.favorcolor!=='yellow'){
         e.preventDefault()
-        const response = await this.axios.put(
+         await this.axios.put(
           "https://david-matan-recipe-api-server.herokuapp.com/api/profiles/favorite",
           {
             id:this.recipe.id
           },
         );
-        console.log(response)
         let currentFavorites= localStorage.getItem('favorites')
         currentFavorites=JSON.parse(currentFavorites)
         currentFavorites.push({id:this.recipe.id})
@@ -84,7 +83,6 @@ export default {
      }
     },
      ifFavoriteExists() {
-              console.log(this.recipe)
         let favorites=localStorage.getItem("favorites")
         favorites=JSON.parse(favorites)
         if(favorites!==undefined&&favorites.length!==0){
@@ -115,9 +113,9 @@ export default {
 
 .gallery:hover{
   -moz-box-shadow: 0 0 10px white;
-    -webkit-box-shadow: 0 0 10px white;
-    box-shadow: 0 0 10px white;
-    cursor: pointer;
+  -webkit-box-shadow: 0 0 10px white;
+  box-shadow: 0 0 10px white;
+  cursor: pointer;
 }
 .upper{
  display: flex;
@@ -137,9 +135,9 @@ export default {
 }
 
 .bb:hover{
-      -moz-box-shadow: 0 0 0 white;
-    -webkit-box-shadow: 0 0 0 white;
-    box-shadow: 0 0 0 white;
+  -moz-box-shadow: 0 0 0 white;
+  -webkit-box-shadow: 0 0 0 white;
+  box-shadow: 0 0 0 white;
 }
 
 .bb > .desc{

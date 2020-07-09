@@ -1,12 +1,13 @@
 <template>
 <div class='center'>
-  <SignIn></SignIn>
+  <SignIn/>
   </div>
   
 </template>
 
 <script>
-import SignIn from '../components/LandingPage/UserOut/UserOutRightColumn/UserOutRightColumnSignIn/UserOutRightColumnSignIn'
+import SignIn from '../components/Login/Login'
+
 export default {
     name: 'Login',
     components:{
@@ -15,7 +16,9 @@ export default {
     mounted: function () {
     this.$nextTick(function () {
       if(this.$root.store.username){
-        this.$router.push("/");
+        const query = this.$route.query;
+        console.log("my query"+query);
+        this.$router.push(this.$route.query.redirect || '/')
       }
     })
 }

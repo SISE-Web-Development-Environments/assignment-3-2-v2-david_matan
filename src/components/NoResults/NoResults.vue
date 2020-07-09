@@ -18,7 +18,7 @@ export default {
 
 .noWatchRecipes{
     height:250px;
-    width:38%;
+    width:70%;
     border-radius: 15px;
     background: rgba(0,0,0,0.6);
     margin:auto;

@@ -68,7 +68,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .left{
     width: 25%;
     float: left;

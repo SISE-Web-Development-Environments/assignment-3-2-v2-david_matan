@@ -6,14 +6,14 @@
           <div class="upper">
               <span><font-awesome-icon class="icons" icon="clock"/> {{this.recipe.readyInMinutes}}</span>
               <span><font-awesome-icon class="icons" style="color:red" icon="heart"/> {{this.recipe.aggregateLikes}}</span>
-              <div>
+              <div class="icon-p">
                   <span><font-awesome-icon class="icons" icon="leaf"/></span>
                   <span v-if="recipe.vegetarian"><span><img style="width:20px; margin-bottom:3px; margin-left:13px" src="../../assets/V.png"/></span></span>
                   <span v-else><img style="width:20px; margin-bottom:3px; margin-left:13px" src="../../assets/x.png"/></span>
               </div>
            </div> 
            <div class="bottom">
-                <div v-if="this.$root.store.username">
+                <div  class='icon-p' v-if="this.$root.store.username">
                     <span><font-awesome-icon class="icons" icon="eye" alt="eye"/></span>
                     <span v-if="watch">
                        <span><img style="width:20px; margin-bottom:3px; margin-left:13px" src="../../assets/V.png"/></span>
@@ -22,17 +22,18 @@
                       <img style="width:20px; margin-bottom:3px; margin-left:13px" src="../../assets/x.png"/>
                     </span>
                 </div>
-                <div v-if="this.$root.store.username">
+                <div class='icon-p' v-if="this.$root.store.username">
                   <span v-if="this.isInFavorites">
                     <font-awesome-icon class="icons" style="color:yellow"  icon="star" alt="star"/></span>
                   <span v-else>
                     <font-awesome-icon class="icons" style="color:white"  icon="star" alt="star" @click="addToFavorite"/>
                   </span>
                 </div>
-                <span><img style="width:20px; margin-left:17px" src="../../assets/bread.png" alt="bread"/>
+                <div class='icon-p'>
+                <img style="width:20px; margin-left:17px" src="../../assets/bread.png" alt="bread"/>
                     <span v-if="recipe.glutenFree"><img style="width:20px; margin-bottom:3px; margin-left:13px" src="../../assets/V.png"/></span>
                     <span v-else><img style="width:20px; margin-bottom:3px; margin-left:13px" src="../../assets/x.png"/></span>
-                </span>
+                </div>
             </div>
       </div>
   </div>
@@ -101,7 +102,7 @@ export default {
 
 </script>
 
-<style>
+<style >
 .gallery {
   align-items: center;
   margin: 20px;
@@ -109,6 +110,9 @@ export default {
   float: left;
   width: 250px;
   border-radius: 15px ;
+}
+div.icon-p{
+  display:flex;
 }
 
 .gallery:hover{
@@ -121,6 +125,7 @@ export default {
  display: flex;
   justify-content: space-between;
 }
+
 
 .bottom{
   display: flex;
@@ -181,7 +186,7 @@ div.title{
   margin-left:15px;
 }
 
-p{
+.gallery p{
   color:white;
 }
 

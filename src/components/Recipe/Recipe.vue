@@ -83,7 +83,7 @@ export default {
     }
 </script>
 
-<style>
+<style >
 
 .title1{
     font-family: 'Rubik', sans-serif;

@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .searchbtn{
   border:1px solid white;
   height: 35px;

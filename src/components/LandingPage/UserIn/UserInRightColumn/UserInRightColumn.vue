@@ -47,7 +47,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 .column-right-in{
     display: inline-block;

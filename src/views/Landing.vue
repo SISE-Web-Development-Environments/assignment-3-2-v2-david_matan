@@ -1,18 +1,15 @@
 <template>
-  <span>
-    <span v-if=this.$root.store.username>
-      <LeftColumnIn :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
-    </span>
-    <span v-else>
-    <LeftColumOut :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
-    </span>
-    <span v-if=!this.$root.store.username>
-      <RightColumOut id="right_colum_out" />
-    </span>
-    <span v-else>
-      <RightColumIn :lastWatchedRecipes="lastWatchedRecipes"/>
-    </span>
-  </span>
+  <div >
+    <div >
+          <LeftColumnIn v-if=this.$root.store.username :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
+    <LeftColumOut  v-else :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
+    </div>
+  <div >
+     <RightColumOut  v-if=!this.$root.store.username id="right_colum_out" />
+      <RightColumIn v-else :lastWatchedRecipes="lastWatchedRecipes"/>
+  </div>
+     
+  </div>
 </template>
 
 <script>
@@ -72,7 +69,7 @@ methods:{
 }}
 </script>
 
-<style>
+<style >
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Fjalla+One&family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&family=Marck+Script&family=Merienda&family=Oleo+Script&display=swap');
@@ -82,4 +79,6 @@ methods:{
   display: none;
 }
 }
+
+
 </style>

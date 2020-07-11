@@ -16,10 +16,7 @@ export default {
         isInFavorites:false
         }
     },
-    mounted(){
-        this.getRecipeInformation()
-        this.ifFavoriteExists()
-    },
+ 
     methods:{
         async getRecipeInformation(){
           let path;
@@ -51,7 +48,7 @@ export default {
         lastWatchUpdate(){
           let historyWatch=localStorage.getItem("watch")
           let isWatched=false;
-          if(historyWatch!==undefined && historyWatch.length!==null){
+          if(historyWatch !=null && historyWatch.length!==null){
               historyWatch=JSON.parse(historyWatch)
               isWatched=historyWatch.some(recipe => {return this.$route.params.id.toString()===recipe.id.toString()})
           }
@@ -65,11 +62,15 @@ export default {
       ifFavoriteExists() {
         let favoritesArray=localStorage.getItem("favorites")
         favoritesArray=JSON.parse(favoritesArray)
-        if(favoritesArray!==undefined&&favoritesArray.length!==0){
+        if(favoritesArray!=null&&favoritesArray.length!==0){
           this.isInFavorites=favoritesArray.some(favorRecipe => this.$route.params.id===favorRecipe.id)
         }
     },
-    }
+    },
+       beforeMount(){
+        this.getRecipeInformation()
+        this.ifFavoriteExists()
+    },
 }
 </script>
 

@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .profbtn{
     margin-bottom: 1rem;
     width: 150px;

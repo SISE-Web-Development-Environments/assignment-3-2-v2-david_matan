@@ -1,5 +1,5 @@
 <template>
-<div class='center'>
+<div >
   <SignIn/>
   </div>
   
@@ -27,10 +27,6 @@ export default {
 </script>
 
 <style>
-.center{
-   padding: 5%; 
-   text-align: center;
-   vertical-align: middle;
-}
+
 
 </style>

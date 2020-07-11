@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Open+Sans&display=swap');
 
 .searchpage{

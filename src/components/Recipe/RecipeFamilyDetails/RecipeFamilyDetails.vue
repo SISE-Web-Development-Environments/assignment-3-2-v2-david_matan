@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .detailsfamily{
     border:solid 0.5px white;
     -webkit-box-shadow: 0px 2px 19px 4px #FFFFFF; 

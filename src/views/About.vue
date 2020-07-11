@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="about-wrapper">
     <h1>Our Team</h1>
     <div class="team">
       <div class="team_member">
@@ -63,10 +63,10 @@
   padding: 5%;
   text-align: center;
 }
-.wrapper p {
+.about-wrapper p {
   color: black;
 }
-.wrapper h1 {
+.about-wrapper h1 {
   font-size: 110px;
   font-family: "Allura", cursive;
   color: black;

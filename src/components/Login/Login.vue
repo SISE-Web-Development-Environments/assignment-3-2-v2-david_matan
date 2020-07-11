@@ -113,14 +113,9 @@ export default {
 }
 </script>
 
-<style>
+<style  >
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&family=Marck+Script&family=Merienda&family=Oleo+Script&display=swap');
-
-
-
-
-
 
 .sign-in-form{
     width: 300px;

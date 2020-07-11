@@ -341,7 +341,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .sign-up-form form {
     display: flex;
     flex-direction: column;

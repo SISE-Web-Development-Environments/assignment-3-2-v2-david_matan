@@ -34,9 +34,9 @@ Vue.use(IconsPlugin)
 
 // Import FontAwsome
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf,faEye,faStar,faUser,faUserSecret,faUserEdit,faEnvelope,faImage,faGlobeAmericas,faLock} from '@fortawesome/free-solid-svg-icons'
+import { faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf,faEye,faStar,faUser,faUserSecret,faUserEdit,faEnvelope,faImage,faGlobeAmericas,faLock,faTimes} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf,faEye,faStar,faUser,faUserSecret,faUserEdit,faEnvelope,faImage,faGlobeAmericas,faLock)
+library.add(faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf,faEye,faStar,faUser,faUserSecret,faUserEdit,faEnvelope,faImage,faGlobeAmericas,faLock,faTimes)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // Import our routes

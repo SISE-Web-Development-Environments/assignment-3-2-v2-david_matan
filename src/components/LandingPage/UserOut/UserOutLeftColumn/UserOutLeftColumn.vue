@@ -1,5 +1,5 @@
 <template>
-   <div class="column-left">
+   <div class="column-left-out">
        <div class=landing>
           <Header/>
           <div class="container">
@@ -34,16 +34,17 @@ export default {
 }
 </script>
 
-<style>
-.column-left{
-display: inline-block; 
-width: 75%;
+<style >
+.column-left-out{
+width:75%;
+float:left;
 background: url('../../../../assets/3.jpeg')  ;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
 height: 100vh;
+
 }
 
 .landing {
@@ -53,14 +54,17 @@ position: relative;
 
 .container{
     text-align: center;
+    align-items: center;
 
 }
 
 .recipes{
-  width: 100%;
+  width: auto;
   max-width: 1100px;
 }
 .morerecipes{
+  
+  position: relative;
   width: 100px;
   height: 45px;
   border:1px solid white;
@@ -69,6 +73,7 @@ position: relative;
   border-radius: 5px;
   font-family: 'Fjalla One', sans-serif;
   outline: none;
+  position:inherit;
 }
 
 .morerecipes:hover{

@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .result{
     height:350px;
     width:70%;

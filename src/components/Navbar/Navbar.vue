@@ -86,7 +86,7 @@
         </mdb-navbar-toggler>
     </mdb-navbar>
 </template>
-<style scoped>
+<style >
 /* navigation bar */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
@@ -103,17 +103,17 @@
 }
 
 
-span {
+#mynav span {
     margin-right: 10px;
 }
 
-.seperator {
+#mynav.seperator {
     display: inline;
     margin-right: 1rem;
     filter: drop-shadow(0.5px 12px 15.5px rgb(255, 255, 255));
 }
 
-.toggle-button {
+#mynav.toggle-button {
     position: absolute;
     top: .75rem;
     right: 1rem;
@@ -124,7 +124,7 @@ span {
     height: 21px;
 }
 
-.toggle-button .bar {
+ #mynav.toggle-button .bar {
     height: 3px;
     width: 100%;
     background-color: white;

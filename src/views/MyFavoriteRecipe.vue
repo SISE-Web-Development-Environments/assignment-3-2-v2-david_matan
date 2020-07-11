@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="myFavoriteRecipe">
     <div class="left">
     <div class="myrecipetitle"><h1>Your Favorite Recipes</h1></div>
     <img class="img" :src=$root.store.profilePicture alt="Avatar">
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style>
-    .left{
+    .myFavoriteRecipe.left{
     width: 25%;
     float: left;
     background: url('../assets/black-background.jpg') ;
@@ -101,7 +101,7 @@ export default {
     border-right: 0.5px solid white;
     box-shadow: 1px 0px 43px white;
 }
-    .right{
+    .myFavoriteRecipe.right{
     width:75%;
     float:left;
 
@@ -115,7 +115,7 @@ export default {
     border:2px solid white;
     }
 
-    .wrap{
+    .myFavoriteRecipe.wrap{
     margin-top:2rem;
     margin-left:2rem
     }

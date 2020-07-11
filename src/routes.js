@@ -9,6 +9,7 @@ import Login from  "./views/Login.vue"
 import MyFamilyRecipe from  "./views/MyFamilyRecipe.vue"
 import MyFavoriteRecipe from './views/MyFavoriteRecipe.vue'
 import Recipe from "./views/Recipe.vue"
+import About from "./views/About.vue"
 
 const routes = [
   {
@@ -50,7 +51,14 @@ const routes = [
     path: "/recipe/:type/:id",
     name: "recipe",
     component: Recipe
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About
   }
+  
+  
   
 ];
 

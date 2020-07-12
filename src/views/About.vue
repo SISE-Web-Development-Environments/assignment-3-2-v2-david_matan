@@ -56,7 +56,7 @@
 @import url("https://fonts.googleapis.com/css?family=Allura");
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 
-.about-wrapper {
+.wrapper {
   display: inline-block;
   align-items: center;
   margin: 0;

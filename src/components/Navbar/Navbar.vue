@@ -4,13 +4,13 @@
      <router-link to='/#'> <span> <font-awesome-icon icon="utensils"/> </span> <span style="font-size:25px">Hamburgesa</span></router-link>
     </mdb-navbar-brand>
     <mdb-navbar-nav left v-if=!$root.store.username>
-     <mdb-nav-item class="seperator" id=a href="#" active><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
+     <mdb-nav-item class="seperator" id=a href="#"><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
         <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/about">About</router-link></mdb-nav-item>
            <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="sign-in-alt"/></span><router-link to="/login">Login</router-link></mdb-nav-item>
         <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/signup">Register</router-link></mdb-nav-item>
     </mdb-navbar-nav>
     <mdb-navbar-nav left v-else>
-     <mdb-nav-item class="seperator" id=a href="#" active><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
+     <mdb-nav-item class="seperator" id=a href="#" ><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
         <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/about">About</router-link></mdb-nav-item>
     </mdb-navbar-nav>
     <mdb-navbar-toggler>
@@ -21,7 +21,7 @@
         <mdb-nav-item class="seperator" style="margin-top:3px" >Hi {{$root.store.username }} !</mdb-nav-item>
            <mdb-dropdown tag="li" class="nav-item" >
           <mdb-dropdown-toggle tag="a" navLink slot="toggle" waves-fixed><img
-            src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
+            :src="$root.store.profilePicture"
             class="rounded-circle z-depth-0"
             alt="avatar image"
             height="30"
@@ -41,7 +41,6 @@
 <style scoped>
 /* navigation bar */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
 #mynav{
 font-family: 'Noto Sans KR', sans-serif;   
 border-bottom: 1px outset white;
@@ -53,18 +52,15 @@ top:0;
 width:100vw;   
 z-index:200;  
 }
-
 #mynav span{
     margin-right: 10px;
 }
-
 #mynav .seperator{
     display: inline;
     margin-right: 1rem;
     margin-top: 3px;
     filter: drop-shadow(0.5px 12px 15.5px rgb(255, 255, 255));
 }
-
 #mynav.toggle-button {
     position: absolute;
     top: .75rem;
@@ -75,7 +71,6 @@ z-index:200;
     width: 30px;
     height: 21px;
 }
-
  #mynav.toggle-button .bar {
     height: 3px;
     width: 100%;
@@ -114,7 +109,6 @@ z-index:200;
         catch(err){
         console.log(err)
         }
-
       }
     }
   }

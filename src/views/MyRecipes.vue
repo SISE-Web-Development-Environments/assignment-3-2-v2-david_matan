@@ -2,13 +2,13 @@
   <div>
     <div class="left">
     <div class="myrecipetitle"><h1>Your Personally Recipes</h1></div>
-    <img class="img" src="../assets/profile.jpg" alt="Avatar">
+    <img class="img" :src=$root.store.profilePicture alt="Avatar">
     <div class="wrap">
     <div >
-        <GreenButton type="My Favorite Recipe"/>
+        <router-link to="/myfavorite"><GreenButton type="My Favorite Recipe"/></router-link>
     </div>
     <div>
-       <GreenButton type="My Family Recipe"/>
+        <router-link to="/myfamily"><GreenButton type="My Family Recipe"/></router-link>
     </div>
     </div>
     </div>
@@ -53,14 +53,13 @@ export default {
            try{
             this.myRecipes=[]
             const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/recipes",{withCredentials: true})
-            this.myRecipes=response.data.recipes;
-            console.log(this.myRecipes)
+            this.myRecipes=response.data.preview;
            }
            catch(err)
            {
              if(err.response.status===401){
                  this.$root.store.username=undefined
-               this.$router.push('/search')
+               this.$router.push('/login')
              }
            }
         }
@@ -69,7 +68,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .left{
     width: 25%;
     float: left;

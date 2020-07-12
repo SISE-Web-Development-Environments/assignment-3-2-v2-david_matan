@@ -17,12 +17,12 @@ export default {
         recipe:{
         type:Object,
         required:true
-    }
+    },
 }
 }
 </script>
 
-<style>
+<style >
 .details{
     border:solid 0.5px white;
     -webkit-box-shadow: 0px 2px 19px 4px #FFFFFF; 

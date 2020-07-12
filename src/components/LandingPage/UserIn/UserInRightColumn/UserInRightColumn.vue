@@ -2,7 +2,7 @@
 <span class="column-right-in">
     <div  v-if="lastWatchedRecipes.length!==0" class="wrap-last-watch">
         <span  v-for="recipe in this.lastWatchedRecipes" :key="recipe.id" class="recipes">
-            <PreviewRecipe :recipe="recipe" />
+              <router-link :to="{ name: 'recipe', params: {type:recipe.type,id: recipe.id}}"><PreviewRecipe :recipe="recipe" /></router-link>
         </span>
     </div>
     <div>
@@ -10,7 +10,9 @@
             <h1  class="lastwatch">Hey {{$root.store.username}} ! Lets Remember your last Watched Recipes</h1>
         </span>
         <span v-else>
-            <NoResults :message="'You did not watch ane recipes yet!'"/>
+            <div class="nowatch">
+            <NoResults :message="'You did not watch any recipes yet!'" :class="{ noWatchRecipes : true}"/>
+            </div>
         </span>
         <div class="buttons">
              <div><router-link to="/myfavorite"><button class="options" >Your Favorite</button></router-link></div>
@@ -23,7 +25,7 @@
 
 <script>
 import PreviewRecipe from '../../../PreviewRecipe/PreviewRecipe'
-import NoResults from '../../../NoResults/NoResults';
+import NoResults from '../../../../components/NoResults/NoResults'
 export default {
     name:'RightColumnIn',
     data(){
@@ -45,7 +47,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 .column-right-in{
     display: inline-block;
@@ -55,7 +57,7 @@ export default {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100%;
+    height: 136.3vh;
 }
 
 .wrap-last-watch{
@@ -90,5 +92,9 @@ export default {
     left:0;
     margin-top:2rem;
     margin:2rem;
+}
+
+.nowatch{
+    margin-top:20%;
 }
 </style>

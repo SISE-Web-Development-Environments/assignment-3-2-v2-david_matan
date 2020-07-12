@@ -28,7 +28,7 @@ export default {
 }
 
 body{
-  background: url("/client/src/assets/searchback.jpg") no-repeat center center fixed;
+  background: url("../../client/src/assets/searchback.jpg") no-repeat center center fixed;
    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

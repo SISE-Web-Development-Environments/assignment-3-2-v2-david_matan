@@ -80,7 +80,7 @@ export default {
 
 </script>
 
-<style>
+<style >
     .firstbtn{
         margin-left:0.5rem;
         background:white;

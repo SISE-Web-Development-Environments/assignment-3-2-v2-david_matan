@@ -77,14 +77,7 @@ export default {
 </script>
 
 <style>
-body{
-  background: url("../assets/searchback.jpg") no-repeat center center fixed;
-   -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height:100%;
-}
+
 
 .result{
   margin:auto;

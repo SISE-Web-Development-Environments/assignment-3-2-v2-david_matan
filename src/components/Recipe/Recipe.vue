@@ -11,14 +11,21 @@
                 <RecipeDetails :recipe="recipe"/>
                 </div>
                 <div class="wrapbuttons">
-                <GreenButton  type="Add To Favorites"/>
+                <GreenButton :favorites="favorites" :type="favorbtn" v-on:addtofavor="addToFavorite"/>
+                <span v-if="type==='family'">
+                <RecipeFamilyDetails :recipe="recipe"/>
+                </span>
                 </div>
               </div>
           </div>
           <hr class="new1">
+          <span  v-if="type==='family'">
+          <div class="summary">{{this.recipe.summary}}</div>
+          <hr class="new1">
+          </span>
           <RecipeIngredients :ingredients="this.recipe.ingredients"/>
            <hr class="new1">
-           <RecipeInstructions :instructions="this.recipe.instructions"/>
+         <RecipeInstructions :instructions="this.recipe.instructions"/>
       </div>
   </div>
 </template>
@@ -28,24 +35,68 @@ import RecipeDetails from './RecipeDetails/RecipeDetails'
 import RecipeInstructions from './RecipeInstructions/RecipeInstructions'
 import RecipeIngredients from './RecipeIngredients/RecipeIngredients'
 import GreenButton from '../GreenButton/GreenButton'
+import RecipeFamilyDetails from '../../components/Recipe/RecipeFamilyDetails/RecipeFamilyDetails'
 export default {
     name:'Recipe',
     components:{
         RecipeDetails,
         RecipeInstructions,
         RecipeIngredients,
-        GreenButton
+        GreenButton,
+        RecipeFamilyDetails
     },
-    props:{
-        recipe:{
-            type:Object,
-            required:true
+    data(){
+        return {
+            favorbtn:""
         }
     },
-}
+    mounted(){
+        console.log(this.favorites)
+        if(this.favorites)
+            this.favorbtn="Already in favorites"
+        else
+            this.favorbtn="Add To Favorites"
+    },
+    props:{
+      recipe:{
+        type:Object,
+        required:true
+        },
+      type:{
+          type:String,
+          required:true
+      },
+      favorites:{
+          type:Boolean,
+          required:true
+      }
+    },
+    methods:{
+       async addToFavorite()
+        {
+            try{
+                 console.log('at')
+                await this.axios.put(
+                "https://david-matan-recipe-api-server.herokuapp.com/api/profiles/favorite",
+                {
+                    id:this.recipe.id
+                },
+                );
+                let currentFavorites= localStorage.getItem('favorites')
+                currentFavorites=JSON.parse(currentFavorites)
+                currentFavorites.push({id:this.recipe.id})
+                localStorage.setItem('favorites',JSON.stringify(currentFavorites));
+                this.favorbtn="Already in favorites"
+            }
+            catch(err){
+                console.log(err.response)
+            }
+            }
+     }
+    }
 </script>
 
-<style>
+<style >
 
 .title1{
     font-family: 'Rubik', sans-serif;
@@ -101,5 +152,10 @@ hr.new1 {
   width:95%;
 }
 
+.summary{
+  color:white;
+  font-size:17px;
+  margin-left:2rem;
+}
 
 </style>

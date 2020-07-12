@@ -19,7 +19,8 @@ export default {
     props:{
         instructions:{
             type:Array,
-        }    }
+        }    
+    }
 }
 </script>
 

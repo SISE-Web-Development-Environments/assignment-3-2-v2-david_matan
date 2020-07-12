@@ -1,12 +1,12 @@
 <template>
 <div>
-  <SignUpComp class="center"></SignUpcomp>
+  <SignUpComp ></SignUpComp>
   </div>
   
 </template>
 
 <script>
-import SignUpComp from '../components/SingUpComp'
+import SignUpComp from '../components/SignUp/SingUp'
 export default {
     name: 'SignUp',
     components:{

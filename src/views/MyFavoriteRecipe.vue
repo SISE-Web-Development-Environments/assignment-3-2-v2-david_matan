@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="myFavoriteRecipe">
     <div class="left">
     <div class="myrecipetitle"><h1>Your Favorite Recipes</h1></div>
-    <img class="img" src="../assets/profile.jpg" alt="Avatar">
+    <img class="img" :src=$root.store.profilePicture alt="Avatar">
     <div class="wrap">
     <div >
-           <GreenButton type="My Private Recipe"/>
+           <router-link to="/myrecipes"><GreenButton type="My Private Recipe"/></router-link>
     </div>
     <div>
-           <GreenButton type="My Family Recipe"/>
+           <router-link to="/myfamily"><GreenButton type="My Family Recipe"/></router-link>
     </div>
     </div>
     </div>
@@ -76,8 +76,7 @@ export default {
            {
              if(err.response.status===401){
                  this.$root.store.username=undefined
-                 console.log('asd')
-                 this.$router.push('/')
+                 this.$router.push('/login')
              }
               console.log(err.response)
            }
@@ -88,7 +87,7 @@ export default {
 </script>
 
 <style>
-    .left{
+    .myFavoriteRecipe.left{
     width: 25%;
     float: left;
     background: url('../assets/black-background.jpg') ;
@@ -102,7 +101,7 @@ export default {
     border-right: 0.5px solid white;
     box-shadow: 1px 0px 43px white;
 }
-    .right{
+    .myFavoriteRecipe.right{
     width:75%;
     float:left;
 
@@ -116,7 +115,7 @@ export default {
     border:2px solid white;
     }
 
-    .wrap{
+    .myFavoriteRecipe.wrap{
     margin-top:2rem;
     margin-left:2rem
     }

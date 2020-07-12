@@ -12,16 +12,15 @@
 <script>
 import CheckBox from '../CheckBox/CheckBox'
 export default {
-    name:'RecipeInstructions',
+    name:'RecipeIngredients',
     components:{
         CheckBox
     },
     props:{
         ingredients:{
             type:Array,
-            required:true
         },
-        }    
+    }    
 }
 </script>
 

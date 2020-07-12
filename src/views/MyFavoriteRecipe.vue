@@ -5,10 +5,10 @@
     <img class="img" :src=$root.store.profilePicture alt="Avatar">
     <div class="wrap">
     <div >
-           <GreenButton type="My Private Recipe"/>
+           <router-link to="/myrecipes"><GreenButton type="My Private Recipe"/></router-link>
     </div>
     <div>
-           <GreenButton type="My Family Recipe"/>
+           <router-link to="/myfamily"><GreenButton type="My Family Recipe"/></router-link>
     </div>
     </div>
     </div>

@@ -1,10 +1,5 @@
 <template>
-     <span v-if="favorites">
-     <button :disabled="favorites" class="profbtn">Already In Favorties<router-link to="/register"></router-link></button>
-     </span>
-     <span v-else>
-      <button  class="profbtn">{{type}}<router-link to="/register" @click="$emit('addtofavor')"></router-link></button>   
-     </span>
+      <button  class="profbtn" :disabled="favorites" v-on:click="$emit('addtofavor')">{{type}}<router-link to="/register"></router-link></button>   
 </template>
 
 <script>

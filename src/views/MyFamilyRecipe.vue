@@ -5,10 +5,10 @@
         <img class="img" src="../assets/familyjpg.jpg" alt="Avatar">
         <div class="wrap">
                 <div >
-           <GreenButton type="My Favorite Recipe"/>
+           <router-link to="/myfavorite"><GreenButton type="My Favorite Recipe"/></router-link>
     </div>
     <div>
-           <GreenButton type="My Private Recipe"/>
+            <router-link to="/myrecipes"><GreenButton type="My Private Recipe"/></router-link>
     </div>
         </div>
     </div>

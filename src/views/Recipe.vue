@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Recipe :favorites="isInFavorites" :type="type" :recipe="recipe"/>
+    <Recipe  :favorites="isInFavorites" :type="type" :recipe="recipe"/>
   </div>
 </template>
 
@@ -59,17 +59,17 @@ export default {
           if(!isWatched)
           localStorage.setItem("watch",JSON.stringify(historyWatch))
     },
-      ifFavoriteExists() {
-        let favoritesArray=localStorage.getItem("favorites")
-        favoritesArray=JSON.parse(favoritesArray)
-        if(favoritesArray!=null&&favoritesArray.length!==0){
-          this.isInFavorites=favoritesArray.some(favorRecipe => this.$route.params.id===favorRecipe.id)
-        }
+        ifFavoriteExists() {
+          let favoritesArray=localStorage.getItem("favorites")
+          favoritesArray=JSON.parse(favoritesArray)
+          if(favoritesArray!=null&&favoritesArray.length!==0){
+          this.isInFavorites=favoritesArray.some(favorRecipe => this.$route.params.id.toString()===favorRecipe.id.toString() )
+          }
+      },
     },
-    },
-       beforeMount(){
-        this.getRecipeInformation()
-        this.ifFavoriteExists()
+      created(){
+      this.getRecipeInformation()
+      this.ifFavoriteExists()
     },
 }
 </script>

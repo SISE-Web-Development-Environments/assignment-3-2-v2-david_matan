@@ -1,119 +1,66 @@
 <template>
-    <mdb-navbar id="mynav" expand="large" dark color="elegant-color-dark">
-      
-        <mdb-navbar-brand  href="#">
-            <router-link to="/#">
-                <span>
-                    <font-awesome-icon icon="utensils" />
-                </span>
-                <span style="font-size:25px">Hamburgesa</span>
-            </router-link>
-        </mdb-navbar-brand>
-        <mdb-navbar-toggler style="background:#212121;" >
-        <mdb-navbar-nav left v-if="!$root.store.username">
-            <mdb-nav-item class="seperator" id="a" href="#" >
-                <span>
-                    <font-awesome-icon icon="search" />
-                </span>
-                <router-link   to="/search">Search</router-link>
-            </mdb-nav-item>
-            <mdb-nav-item class="seperator" href="#">
-                <span>
-                    <font-awesome-icon icon="user-plus" />
-                </span>
-                <router-link to="/about">About</router-link>
-            </mdb-nav-item>
-            <mdb-nav-item class="seperator" href="#">
-                <span>
-                    <font-awesome-icon icon="sign-in-alt" />
-                </span>
-                <router-link to="/login">Login</router-link>
-            </mdb-nav-item>
-            <mdb-nav-item class="seperator" href="#">
-                <span>
-                    <font-awesome-icon icon="user-plus" />
-                </span>
-                <router-link to="/signup">Register</router-link>
-            </mdb-nav-item>
+  <mdb-navbar id=mynav expand="large" dark color="elegant-color-dark">
+    <mdb-navbar-brand href="#">
+     <router-link to='/#'> <span> <font-awesome-icon icon="utensils"/> </span> <span style="font-size:25px">Hamburgesa</span></router-link>
+    </mdb-navbar-brand>
+    <mdb-navbar-nav left v-if=!$root.store.username>
+     <mdb-nav-item class="seperator" id=a href="#"><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
+        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/about">About</router-link></mdb-nav-item>
+           <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="sign-in-alt"/></span><router-link to="/login">Login</router-link></mdb-nav-item>
+        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/signup">Register</router-link></mdb-nav-item>
+    </mdb-navbar-nav>
+    <mdb-navbar-nav left v-else>
+     <mdb-nav-item class="seperator" id=a href="#" ><span><font-awesome-icon icon="search"/></span><router-link to="/search"> Search</router-link></mdb-nav-item>
+        <mdb-nav-item class="seperator" href="#"><span><font-awesome-icon icon="user-plus"/></span><router-link to="/about">About</router-link></mdb-nav-item>
+    </mdb-navbar-nav>
+    <mdb-navbar-toggler>
+      <mdb-navbar-nav right v-if=!$root.store.username>
+        <mdb-nav-item class="seperator" >Hi Guest !</mdb-nav-item>
+      </mdb-navbar-nav>
+        <mdb-navbar-nav right v-else>
+        <mdb-nav-item class="seperator" style="margin-top:3px" >Hi {{$root.store.username }} !</mdb-nav-item>
+           <mdb-dropdown tag="li" class="nav-item" >
+          <mdb-dropdown-toggle tag="a" navLink slot="toggle" waves-fixed><img
+            :src="$root.store.profilePicture"
+            class="rounded-circle z-depth-0"
+            alt="avatar image"
+            height="30"
+          /></mdb-dropdown-toggle>
+          <mdb-dropdown-menu color="elegant">
+            <mdb-dropdown-item><router-link to="/myfavorite"> My Favorite Recipes </router-link></mdb-dropdown-item>
+            <mdb-dropdown-item><router-link to="/myrecipes">My Private Recipe</router-link></mdb-dropdown-item>
+           <mdb-dropdown-item> <router-link to="/myfamily">My Family Recipe</router-link></mdb-dropdown-item>
+            <div class="dropdown-divider"></div>
+            <mdb-dropdown-item v-on:click="signout">  Sign-out</mdb-dropdown-item>
+          </mdb-dropdown-menu>
+        </mdb-dropdown>
         </mdb-navbar-nav>
-        <mdb-navbar-nav left v-else>
-            <mdb-nav-item class="seperator" id="a" href="#" >
-                <span>
-                    <font-awesome-icon icon="search" />
-                </span>
-                <router-link to="/search">Search</router-link>
-            </mdb-nav-item>
-            <mdb-nav-item class="seperator" href="#">
-                <span>
-                    <font-awesome-icon icon="user-plus" />
-                </span>
-                <router-link to="/about">About</router-link>
-            </mdb-nav-item>
-        </mdb-navbar-nav>
-        
-            <mdb-navbar-nav right v-if="!$root.store.username">
-                <mdb-nav-item  class="seperator">Hi Guest !</mdb-nav-item>
-            </mdb-navbar-nav>
-            <mdb-navbar-nav right v-else>
-                <mdb-nav-item
-                    class="seperator"
-                    style="margin-top:3px"
-                >Hi {{$root.store.username }} !</mdb-nav-item>
-                <mdb-dropdown tag="li" class="nav-item">
-                    <mdb-dropdown-toggle tag="a" navLink slot="toggle" waves-fixed>
-                        <img
-                            src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
-                            class="rounded-circle z-depth-0"
-                            alt="avatar image"
-                            height="30"
-                        />
-                    </mdb-dropdown-toggle>
-                    <mdb-dropdown-menu color="elegant">
-                        <mdb-dropdown-item>
-                            <router-link to="/myfavorite">My Favorite Recipes</router-link>
-                        </mdb-dropdown-item>
-                        <mdb-dropdown-item>
-                            <router-link to="/myrecipes">My Private Recipe</router-link>
-                        </mdb-dropdown-item>
-                        <mdb-dropdown-item>
-                            <router-link to="/myfamily">My Family Recipe</router-link>
-                        </mdb-dropdown-item>
-                        <div class="dropdown-divider"></div>
-                        <mdb-dropdown-item v-on:click="signout">Sign-out</mdb-dropdown-item>
-                    </mdb-dropdown-menu>
-                </mdb-dropdown>
-            </mdb-navbar-nav>
-        </mdb-navbar-toggler>
-    </mdb-navbar>
+    </mdb-navbar-toggler>
+  </mdb-navbar>
 </template>
-<style >
+<style scoped>
 /* navigation bar */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-#mynav {
-    font-family: 'Noto Sans KR', sans-serif;
-    border-bottom: 1px outset white;
-    box-shadow: 0px 15px 20px rgb(0, 0, 0);
-    position: fixed;
-    height: 65px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 200;
+#mynav{
+font-family: 'Noto Sans KR', sans-serif;   
+border-bottom: 1px outset white;
+box-shadow: 0px 15px 20px  rgb(0, 0, 0);
+position:fixed;
+height: 65px;       
+left:0;       
+top:0;           
+width:100vw;   
+z-index:200;  
 }
-
-
-#mynav span {
+#mynav span{
     margin-right: 10px;
 }
-
-
-#mynav.seperator {
+#mynav .seperator{
     display: inline;
     margin-right: 1rem;
+    margin-top: 3px;
     filter: drop-shadow(0.5px 12px 15.5px rgb(255, 255, 255));
 }
-
 #mynav.toggle-button {
     position: absolute;
     top: .75rem;
@@ -124,16 +71,12 @@
     width: 30px;
     height: 21px;
 }
-
  #mynav.toggle-button .bar {
     height: 3px;
     width: 100%;
     background-color: white;
     border-radius: 10px;
 }
-
-
-
 </style>
 
 

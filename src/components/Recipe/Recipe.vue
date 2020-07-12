@@ -11,7 +11,7 @@
                 <RecipeDetails :recipe="recipe"/>
                 </div>
                 <div class="wrapbuttons">
-                <GreenButton :favorites="favorites" type="Add To Favorites" v-on:addtofavor="addToFavorite"/>
+                <GreenButton :favorites="favorites" :type="favorbtn" v-on:addtofavor="addToFavorite"/>
                 <span v-if="type==='family'">
                 <RecipeFamilyDetails :recipe="recipe"/>
                 </span>
@@ -45,6 +45,18 @@ export default {
         GreenButton,
         RecipeFamilyDetails
     },
+    data(){
+        return {
+            favorbtn:""
+        }
+    },
+    mounted(){
+        console.log(this.favorites)
+        if(this.favorites)
+            this.favorbtn="Already in favorites"
+        else
+            this.favorbtn="Add To Favorites"
+    },
     props:{
       recipe:{
         type:Object,
@@ -60,10 +72,10 @@ export default {
       }
     },
     methods:{
-       async addToFavorite(e)
+       async addToFavorite()
         {
             try{
-                e.preventDefault()
+                 console.log('at')
                 await this.axios.put(
                 "https://david-matan-recipe-api-server.herokuapp.com/api/profiles/favorite",
                 {
@@ -74,6 +86,7 @@ export default {
                 currentFavorites=JSON.parse(currentFavorites)
                 currentFavorites.push({id:this.recipe.id})
                 localStorage.setItem('favorites',JSON.stringify(currentFavorites));
+                this.favorbtn="Already in favorites"
             }
             catch(err){
                 console.log(err.response)

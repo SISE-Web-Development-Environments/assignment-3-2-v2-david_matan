@@ -241,12 +241,6 @@ export default {
           this.$v.$touch()
      if (!this.$v.$invalid) {
    try {
-        console.log(this.username)
-        console.log(this.password)
-        console.log(this.country)
-        console.log(this.email)
-        console.log(this.firstname)
-        console.log(this.lastname)
         const response = await this.axios.post(
           "https://david-matan-recipe-api-server.herokuapp.com/api/users/",
           {
@@ -260,15 +254,11 @@ export default {
             url:this.profile
           }
         );
-        if( response.status==200){this.$router.push("/");}
-        else if(response.status==400){
-          console.log(response.body)
+        this.$router.push("/");
         }
-        console.log(response);
-      } catch (err) {
-
-        
-        console.log(err.response);
+        catch (err) {
+        if(err.response.status===400)
+        console.log(err)
       }
   }
   }

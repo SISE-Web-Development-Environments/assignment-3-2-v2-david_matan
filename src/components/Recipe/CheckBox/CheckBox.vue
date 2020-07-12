@@ -9,8 +9,8 @@
     },
     data() {
       return {
-        check2: true
+        check: false
       };
-    }
+    },
   }
 </script>

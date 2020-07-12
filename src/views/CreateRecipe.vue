@@ -52,25 +52,22 @@ import stage3 from '../components/Recipe/createRecipe/createRecipeStage3';
         },
 
         saveRecipe(){
-          console.log(this.recipe);
           this.modalShow=false;
         },
         
       endStage1(data){
-        console.log(data);
           this.stage=2;
           this.recipe.name=data.name;
           this.recipe.time=data.time;
           this.recipe.isGluten=data.selected.some(e => e === 'isGluten');
           this.recipe.isVegaterian=data.selected.some(e => e === 'isVegaterian');
-          console.log(this.recipe);
+        
       },
         endStage2(data){
           this.stage=3;
           this.recipe.ingredients=data;
       },
       endStage3(data){
-        console.log("endStage3");
         this.recipe.instructions=data;
         this.saveRecipe();
       },

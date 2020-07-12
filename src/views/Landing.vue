@@ -52,10 +52,8 @@ methods:{
   async getLastWatchRecipe(){
     try{
       const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/profiles/lastwatch")
-      console.log('asd')
       const recipesFromServer = response.data
       this.lastWatchedRecipes=recipesFromServer
-      console.log(this.lastWatchedRecipes)
     }
     catch(err){
       console.log(err.response)

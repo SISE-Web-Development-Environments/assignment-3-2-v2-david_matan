@@ -99,8 +99,7 @@ z-index:200;
       async signout(){
         try{
         this.$root.store.logout()
-        const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/auth/logout",{withCredentials:true})
-        console.log(response)
+        await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/auth/logout",{withCredentials:true})
         if(this.$route.name==='landing')
         window.location.reload()
         else

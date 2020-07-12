@@ -12,6 +12,9 @@
                 </div>
                 <div class="wrapbuttons">
                 <GreenButton :favorites="favorites" :type="favorbtn" v-on:addtofavor="addToFavorite"/>
+                <div>
+                <GreenButton type="Add new Recipe"/>
+                </div>
                 <span v-if="type==='family'">
                 <RecipeFamilyDetails :recipe="recipe"/>
                 </span>
@@ -31,6 +34,7 @@
 </template>
 
 <script>
+
 import RecipeDetails from './RecipeDetails/RecipeDetails'
 import RecipeInstructions from './RecipeInstructions/RecipeInstructions'
 import RecipeIngredients from './RecipeIngredients/RecipeIngredients'
@@ -43,7 +47,7 @@ export default {
         RecipeInstructions,
         RecipeIngredients,
         GreenButton,
-        RecipeFamilyDetails
+        RecipeFamilyDetails,
     },
     data(){
         return {
@@ -51,7 +55,6 @@ export default {
         }
     },
     mounted(){
-        console.log(this.favorites)
         if(this.favorites)
             this.favorbtn="Already in favorites"
         else
@@ -69,13 +72,12 @@ export default {
       favorites:{
           type:Boolean,
           required:true
-      }
+       }
     },
     methods:{
        async addToFavorite()
         {
             try{
-                 console.log('at')
                 await this.axios.put(
                 "https://david-matan-recipe-api-server.herokuapp.com/api/profiles/favorite",
                 {

@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     fetchData(){
-      console.log("fetch data at itemslist");
       return this.items;
     },
     addItem() {

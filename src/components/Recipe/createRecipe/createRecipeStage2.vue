@@ -42,7 +42,7 @@
             <ul class="mb-0 pl-3">
                 <li v-for="ingredient in submittedIngredient" :key="ingredient.key">
                     {{ ingredient.key +', amount: '+ ingredient.amount }}
-                    <font-awesome-icon @click="removeIngredient(ingredient.key)" icon="times" />
+                    <font-awesome-icon style="color:red;" @click="removeIngredient(ingredient.key)" icon="times" />
                 </li>
             </ul>
         </div>
@@ -147,4 +147,9 @@ const mustBePos = (value) =>  value>0
 .c-2 ul {
     list-style-type: none;
 }
+.c-2 li{
+  font-size: 25px;
+  color:blueviolet;
+}
+
 </style>

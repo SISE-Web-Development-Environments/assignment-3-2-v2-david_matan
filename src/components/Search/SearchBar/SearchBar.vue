@@ -3,7 +3,7 @@
     <div>
         <div class="fatherwrapper">
             <div class="wrapper_searchBar">
-                <input type="text" v-model="query" class="input" placeholder="wich recipe are you looknig for?">
+                <input type="text" v-model="query" class="input" placeholder="Which recipe are you looknig for?">
                 <div class="search" v-on:click="$emit('search',query,number,cuisine,diet,intolerances,sort)">
                     <font-awesome-icon class="searchicon" icon="search"/>
                 </div>

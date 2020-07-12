@@ -11,11 +11,11 @@
         </mdb-navbar-brand>
         <mdb-navbar-toggler style="background:#212121;" >
         <mdb-navbar-nav left v-if="!$root.store.username">
-            <mdb-nav-item class="seperator" id="a" href="#" active>
+            <mdb-nav-item class="seperator" id="a" href="#" >
                 <span>
                     <font-awesome-icon icon="search" />
                 </span>
-                <router-link to="/search">Search</router-link>
+                <router-link   to="/search">Search</router-link>
             </mdb-nav-item>
             <mdb-nav-item class="seperator" href="#">
                 <span>
@@ -37,7 +37,7 @@
             </mdb-nav-item>
         </mdb-navbar-nav>
         <mdb-navbar-nav left v-else>
-            <mdb-nav-item class="seperator" id="a" href="#" active>
+            <mdb-nav-item class="seperator" id="a" href="#" >
                 <span>
                     <font-awesome-icon icon="search" />
                 </span>
@@ -106,6 +106,7 @@
 #mynav span {
     margin-right: 10px;
 }
+
 
 #mynav.seperator {
     display: inline;

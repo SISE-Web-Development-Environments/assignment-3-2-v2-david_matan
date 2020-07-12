@@ -1,6 +1,8 @@
 <template>
     <div class="stage3">
-        <itemsList bigTitle="Instrection" placeholder="Please enter the instrections"/>
+        <itemsList ref='itemSlist'  bigTitle="Instrection" placeholder="Please enter the instrections"/>
+        <b-button  @click="$emit('backStage')">Back</b-button>
+        <b-button  @click="save">Save</b-button>
     </div>
 </template>
 
@@ -11,25 +13,16 @@ import itemsList from '../createRecipe/items-list';
         components:{itemsList},
         data(){
             return{
-                nameState:null,
-                instruction:"",
-             submittedInstruction: [],
-             step:1,
+             submittedInstruction: []
             }
         },
-            methods: {
-                 addStep(){
-                     this.submittedInstruction.push({key:this.step ,instruction:this.instruction})
-                     this.instruction='';
-                        this.step++;
-      },
-      removeInstruction(key){
-        this.submittedInstruction.pop(key); 
-      },
-      editInstruction(){
-
-      }
+        methods:{
+            save(){
+                this.submittedInstruction=this.$refs.itemSlist.fetchData();
+               this.$emit('fetch',this.submittedInstruction);
+            
             }
+        }
         
     }
 </script>

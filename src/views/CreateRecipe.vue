@@ -5,13 +5,10 @@
 
 
     <b-modal id="modal-multi-1" v-model="modalShow" title="Create Recipe" hide-footer>
-    <stage1 v-show="stage==1"/>
-    <stage2 v-show='stage==2'/>
-    <stage3 v-show='stage==3'/>
+    <stage1 @nextStage='endStage1' v-show="stage==1"/>
+    <stage2 @nextStage='endStage2' @backStage='stage=1' v-show='stage==2'/>
+    <stage3 @fetch='endStage3' @backStage='stage=2'  v-show='stage==3'/>
      <div>
-        <b-button v-show="stage!=1" @click="backStage">Back</b-button>
-       <b-button @click="nextStage" v-show="stage!=3" >Next</b-button>
-      <b-button v-show="stage==3">Save</b-button>
       
             <b-progress :value="stage" :max="max" show-progress animated></b-progress>
         </div>
@@ -30,56 +27,55 @@ import stage3 from '../components/Recipe/createRecipe/createRecipeStage3';
     components: {stage1,stage2,stage3},
     data() {
       return {
-        modalShow: false,
-        isGluten: false,
-        isVegetarian:false,
-        amount:"",
-      
+        modalShow:false,
         max:3 ,
-        stage:1
+        stage:1,
+        recipe:{
+          name:'',
+          time:'',
+          image: "http://www.googl.com/img34.jpg",
+          isGluten:false,  
+          isVegaterian: false,
+          ingredients:[],
+          instructions:[]
+        }
       }
     },
       methods: {
-        nextStage(){
-          if(this.stage<3)
-            this.stage=this.stage+1;
+        nextStage(value){
+          if(value<3)
+            this.stage=value+1;
         }, 
          backStage(){
            if(this.stage>1)
             this.stage=this.stage-1;
         },
-      checkFormValidity() {
-        const valid = this.$refs.form.checkValidity()
-        this.nameState = valid
-        return valid
+
+        saveRecipe(){
+          console.log(this.recipe);
+          this.modalShow=false;
+        },
+        
+      endStage1(data){
+        console.log(data);
+          this.stage=2;
+          this.recipe.name=data.name;
+          this.recipe.time=data.time;
+          this.recipe.isGluten=data.selected.some(e => e === 'isGluten');
+          this.recipe.isVegaterian=data.selected.some(e => e === 'isVegaterian');
+          console.log(this.recipe);
       },
-      resetModal() {
-        this.name = ''
-        this.nameState = null
-      }, 
-       resetModal2() {
-        this.amount = ''
-        this.ingredientName = ""
+        endStage2(data){
+          this.stage=3;
+          this.recipe.ingredients=data;
       },
-      handleOk(bvModalEvt) {
-        // Prevent modal from closing
-        bvModalEvt.preventDefault()
-        // Trigger submit handler
-        this.handleSubmit()
+      endStage3(data){
+        console.log("endStage3");
+        this.recipe.instructions=data;
+        this.saveRecipe();
       },
-     
-      handleSubmit() {
-        // Exit when the form isn't valid
-        if (!this.checkFormValidity()) {
-          return
-        }
-        // Push the name to submitted names
-       
-        // Hide the modal manually
-        this.$nextTick(() => {
-          this.$bvModal.hide('modal-prevent-closing')
-        })
-      }
+      
+
   }
   }
 </script>

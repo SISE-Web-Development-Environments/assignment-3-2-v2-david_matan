@@ -115,6 +115,7 @@ div.icon-p{
   display:flex;
 }
 
+
 .gallery:hover{
   -moz-box-shadow: 0 0 10px white;
   -webkit-box-shadow: 0 0 10px white;

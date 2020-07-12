@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="stage-1">
     <b-form @submit.stop.prevent="onSubmit">
       <b-form-group id="example-input-group-1" label="Name" label-for="example-input-1">
         <b-form-input
@@ -9,8 +9,6 @@
           :state="validateState('name')"
           aria-describedby="input-1-live-feedback"
         ></b-form-input>
-        
-
         <b-form-invalid-feedback
           id="input-1-live-feedback"
         >This is a required field and must be at least 3 characters.</b-form-invalid-feedback>
@@ -28,9 +26,14 @@
         </b-form-input>
         <b-form-invalid-feedback id="input-2-live-feedback">This is a required field and must be numeric bigger than 5.</b-form-invalid-feedback>
       </b-form-group>
-
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button class="ml-2" @click="resetForm()">Reset</b-button>
+        <b-form-group >
+      <b-form-checkbox-group id="checkbox-group-2" v-model="form.selected" name="flavour-2">
+        <b-form-checkbox value="isGluten">Gluten Free</b-form-checkbox>
+        <b-form-checkbox value="isVegetarian">Vegetarian</b-form-checkbox>
+      </b-form-checkbox-group>
+        </b-form-group>
+      <b-button @click="onSubmit()">Next</b-button>
+      
     </b-form>
   </div>
 </template>
@@ -46,6 +49,7 @@ export default {
   data() {
     return {
       form: {
+        selected:[],
         name: null,
         time: null
       }
@@ -84,14 +88,15 @@ export default {
       if (this.$v.form.$anyError) {
         return;
       }
+      this.$emit('nextStage',this.form,this.selected);
 
-      alert("Form submitted!");
     }
   }
 };
 </script>
 <style>
-body {
-  padding: 1rem;
+.stage-1 input{
+  border-radius: 0%;
+  margin: 0;
 }
 </style>

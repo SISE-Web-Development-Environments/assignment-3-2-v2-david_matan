@@ -1,43 +1,36 @@
 <template>
     <div class="c-2">
-        <b-form-group
-        id='input-product'
-            label="Product"
-        
-        >
+        <b-form-group id="product-input-group-1" label="Product" label-for="product-input-1">
             <b-form-input
-                 :state="validateState('name')"
-             name="product-input"
-            v-model="$v.productName.$model"
-            label-for="product-input"
-             aria-describedby="product-input-live-feedback"
-                id="product-input"
-                required
+                id="product-input-1"
+                name="product-input-1"
+                v-model="$v.form.product.$model"
+                :state="validateState('product')"
+                aria-describedby="product-live-feedback"
             ></b-form-input>
-              <b-form-invalid-feedback
-          id="product-input-live-feedback"
-        >This is a required field and must be at least 3 characters.</b-form-invalid-feedback>
+            <b-form-invalid-feedback
+                id="product-live-feedback"
+            >This is a required field and must be at least 3 characters.</b-form-invalid-feedback>
         </b-form-group>
-        <b-form-group
-            label="Amount"
-            label-for="Amount-input"
-            invalid-feedback="Amount is required"
-        >
+        <b-form-group id="amount-input-group-2" label="Amount" label-for="amount-input-2">
             <b-form-input
-                id="amount-input"
-                type="number"
-                v-model="amount"
-                min="0"
-                required
-                positiveNumber
+                id="amount-input-2"
+                name="amount-input-2"
+                v-model="$v.form.amount.$model"
+                :state="validateState('amount')"
+                aria-describedby="amount-live-feedback"
             ></b-form-input>
+            <b-form-invalid-feedback
+                id="amount-live-feedback"
+            >This is a required field and must be positive .</b-form-invalid-feedback>
         </b-form-group>
+
         <b-form-group label="Unit" label-for="unit-input">
             <b-form-select
                 id="unit-input"
                 class="unit"
                 label="unit"
-                v-model="selectedMeasurement "
+                v-model="selectedMeasurement"
                 :options="optionsMeasurement"
             ></b-form-select>
         </b-form-group>
@@ -45,55 +38,73 @@
         <b-button @click="addIngredient()">Add</b-button>
 
         <div class="mt-3">
-            <h1>Ingredients</h1> 
+            <h1>Ingredients</h1>
             <ul class="mb-0 pl-3">
                 <li v-for="ingredient in submittedIngredient" :key="ingredient.key">
-                    {{ ingredient.key +', amount:'+ ingredient.amount }}
+                    {{ ingredient.key +', amount: '+ ingredient.amount }}
                     <font-awesome-icon @click="removeIngredient(ingredient.key)" icon="times" />
                 </li>
             </ul>
         </div>
+        <b-button @click="onSubmit()">Next</b-button>
+        <b-button @click="$emit('backStage')">Back</b-button>
     </div>
 </template>
 
 <script>
+import { helpers } from 'vuelidate/lib/validators'
 import { validationMixin } from "vuelidate";
-import { required} from "vuelidate/lib/validators";
+import { required,decimal} from "vuelidate/lib/validators";
+const decimal_reg = helpers.regex('alpha', /^\d+(?:\.\d{1,2})?$/)
+const mustBePos = (value) =>  value>0
     export default {
         mixins: [validationMixin],
         name:"stage2",
         data(){
         return{
-                amount:"",
-                  productName:"",
+          form:{
+                amount:null,
+                product:null
+          },
              submittedIngredient: [],
-                optionsMeasurement:[  { value: null, text: 'None' },
+          optionsMeasurement:[  { value: null, text: 'None' },
           { value: 'oz', text: 'oz' },
           { value: 'grams', text: 'grams' },],
-        selectedMeasurement:'None',
+        selectedMeasurement:null,
 
             }
         },
           validations: {
+            form:{
                amount: {
-        required
+        required,
+        decimal,
+        mustBePos,decimal_reg
+    
       },
-      productName:{
+      product:{
           required
       }
+            }
       
 
   },
-            methods: {
+     methods: {
                  addIngredient(){
-         this.submittedIngredient.push({key:this.productName ,amount:this.amount})
-         this.productName='';
-         this.amount='';
-      },
-      removeIngredient(key){
-       
-        this.submittedIngredient.pop(key);
-        
+                this.$v.form.$touch();
+                if (this.$v.form.$anyError) {
+                   return;
+                   }
+                   if(this.selectedMeasurement!=null){
+                      this.submittedIngredient.push({key:this.form.product ,amount:this.form.amount,unit:this.selectedMeasurement})
+                   }
+                  else{
+                    this.submittedIngredient.push({key:this.form.product ,amount:this.form.amount})
+                  }
+                     this.resetForm();
+                   },
+    removeIngredient(key){
+                   this.submittedIngredient.pop(key);    
       },
     validateState(name) {
       const { $dirty, $error } = this.$v.form[name];
@@ -101,27 +112,39 @@ import { required} from "vuelidate/lib/validators";
     },
     resetForm() {
       this.form = {
-        name: null,
-        time: null
-      };
+        amount: null,
+        product: null
+      }
+      this.selectedMeasurement=null;
+      
 
       this.$nextTick(() => {
         this.$v.$reset();
       });
     },
-    onSubmit() {
+      onSubmit() {
       this.$v.form.$touch();
-      if (this.$v.form.$anyError) {
+      if(this.submittedIngredient.length>0){
+          this.$emit('nextStage',this.submittedIngredient);
+      }
+      else if (this.$v.form.$anyError) {
         return;
       }
-
-      alert("Form submitted!");
+      
     }
+    
+  
   }
         
     }
 </script>
 
-<style >
-
+<style  >
+.c-2 input {
+    border-radius: 0%;
+    margin: 0;
+}
+.c-2 ul {
+    list-style-type: none;
+}
 </style>

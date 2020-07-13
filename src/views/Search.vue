@@ -32,6 +32,15 @@ export default {
       empty:false
     }
   },
+  created(){
+  if(this.$root.store.username){
+    const lastResults = localStorage.getItem(this.$root.store.username)
+    if(lastResults || lastResults.length!==0)
+    this.recipesRes=JSON.parse(lastResults)
+    else
+    this.empty=true;
+  }
+  },
   methods:{
     async search(query,number,cuisine,diet,intolerances,sort)
     {
@@ -52,10 +61,14 @@ export default {
           this.sortByPopularity()
         if(sort==='on2')
           this.sortByTime()
+        console.log('abc')
+        localStorage.setItem(this.$root.store.username,JSON.stringify(this.recipesRes))  
       }
       catch(err){
-        if(err.response.data.message==="No results found")
+        if(err.response.data.message==="No results found"){
           this.empty=true
+          localStorage.setItem(this.$root.store.username,[])
+        }
       }
 
     },

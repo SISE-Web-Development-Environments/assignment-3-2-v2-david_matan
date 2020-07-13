@@ -11,7 +11,7 @@
                 <RecipeDetails :recipe="recipe"/>
                 </div>
                 <div class="wrapbuttons">
-                <GreenButton :favorites="favorites" :type="favorbtn" v-on:addtofavor="addToFavorite"/>
+                <GreenButton :favorites="isInFavorite" :type="favorbtn" v-on:addtofavor="addToFavorite"/>
                 <div>
                 <GreenButton type="Add new Recipe"/>
                 </div>
@@ -51,7 +51,8 @@ export default {
     },
     data(){
         return {
-            favorbtn:""
+            favorbtn:"",
+            isInFavorite:this.favorites
         }
     },
     mounted(){
@@ -89,6 +90,7 @@ export default {
                 currentFavorites.push({id:this.recipe.id})
                 localStorage.setItem('favorites',JSON.stringify(currentFavorites));
                 this.favorbtn="Already in favorites"
+                this.isInFavorite=true;
             }
             catch(err){
                 console.log(err.response)

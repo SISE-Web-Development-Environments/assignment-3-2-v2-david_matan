@@ -4,7 +4,7 @@
     <div class="results" >
       <span v-if="!empty">
         <span v-for="recipe in this.recipesRes" :key="recipe.id" class="recipes">
-                <Result :recipe="recipe" />
+              <router-link :to="{ name: 'recipe', params: {type:recipe.type,id: recipe.id}}"><Result :recipe="recipe" /></router-link> 
         </span>
       </span>
       <span v-else>
@@ -38,7 +38,7 @@ export default {
     if(lastResults || lastResults.length!==0)
     this.recipesRes=JSON.parse(lastResults)
     else
-    this.empty=true;
+    this.recipesRes=[]
   }
   },
   methods:{
@@ -73,7 +73,9 @@ export default {
 
     },
     clear(){
-      this.recipesRes=[]
+     this.recipesRes=[]
+     localStorage.setItem(this.$root.store.username,[])
+     
     },
     sortByPopularity(){
       this.recipesRes.sort(function(a,b){

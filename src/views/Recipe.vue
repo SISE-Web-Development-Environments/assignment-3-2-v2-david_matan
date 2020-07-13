@@ -39,9 +39,13 @@ export default {
           {
             console.log(err)
             if(err.response.status===401){
-            this.$root.store.username=undefined
-            this.$router.push({ name: 'login', query: { redirect: path } })
+              this.$root.store.username=undefined
+              this.$router.push({ name: 'login', query: { redirect: path } })
              }
+            if(err.response.status===404){
+              this.$router.push({ name: 'NoFound', query: { redirect: path } })
+             }
+
           }
         },
 

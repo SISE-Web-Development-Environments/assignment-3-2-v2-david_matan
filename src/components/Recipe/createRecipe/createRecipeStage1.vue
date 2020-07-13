@@ -26,6 +26,18 @@
         </b-form-input>
         <b-form-invalid-feedback id="input-2-live-feedback">This is a required field and must be numeric bigger than 5.</b-form-invalid-feedback>
       </b-form-group>
+          <b-form-group id="url-input-group-3" label="Picture URL" label-for="url-input-3">
+        <b-form-input
+        type="url"
+          id="url-input-3"
+          name="url-input-3"
+          v-model="$v.form.image.$model"
+          :state="validateState('image')"
+          aria-describedby="input-3-live-feedback"
+        >
+        </b-form-input>
+        <b-form-invalid-feedback id="input-3-live-feedback">This is a required field.</b-form-invalid-feedback>
+      </b-form-group>
         <b-form-group >
       <b-form-checkbox-group id="checkbox-group-2" v-model="form.selected" name="flavour-2">
         <b-form-checkbox value="isGluten">Gluten Free</b-form-checkbox>
@@ -42,7 +54,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import { required, minLength,numeric,minValue } from "vuelidate/lib/validators";
+import { required, minLength,numeric,minValue,url} from "vuelidate/lib/validators";
 
 export default {
   mixins: [validationMixin],
@@ -51,7 +63,8 @@ export default {
       form: {
         selected:[],
         name: null,
-        time: null
+        time: null,
+        image:null,
       }
     };
   },
@@ -65,7 +78,9 @@ export default {
       name: {
         required,
         minLength: minLength(3)
-      }
+      },
+      image:{ required,
+      url}
     }
   },
   methods: {
@@ -76,7 +91,8 @@ export default {
     resetForm() {
       this.form = {
         name: null,
-        time: null
+        time: null,
+        image:null,
       };
 
       this.$nextTick(() => {

@@ -40,7 +40,7 @@
         <div class="mt-3">
             <h1>Ingredients</h1>
             <ul class="mb-0 pl-3">
-                <li v-for="ingredient in submittedIngredient" :key="ingredient.key">
+                <li v-for="ingredient in submittedIngredient" :key="ingredient.product">
                     {{ ingredient.key +', amount: '+ ingredient.amount }}
                     <font-awesome-icon style="color:red;" @click="removeIngredient(ingredient.key)" icon="times" />
                 </li>
@@ -96,10 +96,10 @@ const mustBePos = (value) =>  value>0
                    return;
                    }
                    if(this.selectedMeasurement!=null){
-                      this.submittedIngredient.push({key:this.form.product ,amount:this.form.amount,unit:this.selectedMeasurement})
+                      this.submittedIngredient.push({product:this.form.product ,amount:parseFloat(this.form.amount),unit:this.selectedMeasurement})
                    }
                   else{
-                    this.submittedIngredient.push({key:this.form.product ,amount:this.form.amount})
+                    this.submittedIngredient.push({product:this.form.product ,amount:parseFloat(this.form.amount)})
                   }
                      this.resetForm();
                    },

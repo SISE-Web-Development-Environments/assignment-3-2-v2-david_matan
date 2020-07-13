@@ -8,10 +8,6 @@
     <stage1 @nextStage='endStage1' v-show="stage==1"/>
     <stage2 @nextStage='endStage2' @backStage='stage=1' v-show='stage==2'/>
     <stage3 @fetch='endStage3' @backStage='stage=2'  v-show='stage==3'/>
-     <div>
-      
-            <b-progress :value="stage" :max="max" show-progress animated></b-progress>
-        </div>
     </b-modal>
 
    
@@ -28,9 +24,10 @@ import stage3 from '../components/Recipe/createRecipe/createRecipeStage3';
     data() {
       return {
         modalShow:false,
-        max:3 ,
         stage:1,
         recipe:{
+            id: 15327,
+           username: "matanG",
           name:'',
           time:'',
           image: "http://www.googl.com/img34.jpg",
@@ -51,8 +48,23 @@ import stage3 from '../components/Recipe/createRecipe/createRecipeStage3';
             this.stage=this.stage-1;
         },
 
-        saveRecipe(){
+        async saveRecipe(){
           console.log(this.recipe);
+          try{
+          const response = await this.axios.post("https://david-matan-recipe-api-server.herokuapp.com/recipes/familyrecipes",
+            this.recipe);
+
+          if(response.status==200){
+            console.log('save');
+          }
+
+          }
+          catch(e){
+            console.log(e.name + ': ' + e.message);
+          }
+
+
+
           this.modalShow=false;
         },
         
@@ -61,6 +73,7 @@ import stage3 from '../components/Recipe/createRecipe/createRecipeStage3';
           this.stage=2;
           this.recipe.name=data.name;
           this.recipe.time=data.time;
+          this.recipe.image=data.image;
           this.recipe.isGluten=data.selected.some(e => e === 'isGluten');
           this.recipe.isVegaterian=data.selected.some(e => e === 'isVegaterian');
           console.log(this.recipe);

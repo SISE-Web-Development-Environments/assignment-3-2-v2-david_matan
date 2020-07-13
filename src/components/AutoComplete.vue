@@ -20,10 +20,12 @@
             }
         },
         methods:{
-            async filterInput(){
-                if(this.query.lenth()>2){
+           async filterInput(){
+                if(this.query.length>2){
+                   console.log("work");
+                this.modal=true;
                 try{
-                    const respon = await this.axious.get('https://api.spoonacular.com/food/recipes/autocomplete',
+                    const respon = await this.axios.get('https://api.spoonacular.com/food/recipes/autocomplete',
                     {
                         params: {
                             query:this.query,
@@ -31,14 +33,15 @@
                             apiKey:'d151691bb83e496d8faad3c6db0af653'
                         }
                     });
-                    this.listOfSugg = respon.map(({ title }) => title).filter(item => {
-                        return item.toLowerCase().startWith(this.query.toLowerCase());
+                    console.log("respon:"+ respon);
+                    this.listOfSugg = respon.map((x) => x.title).filter((x) => {
+                        return x.toLowerCase().startWith(this.query.toLowerCase());
                     });
                 }
-                catch(err){
-                    console.log(err);
+                catch(e){
+                    console.log(e.name + ': ' + e.message);
                 }
-            }
+                }
             },
             setInput(item){
                 this.query=item;

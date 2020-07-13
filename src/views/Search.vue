@@ -4,7 +4,7 @@
     <div class="results" >
       <span v-if="!empty">
         <span v-for="recipe in this.recipesRes" :key="recipe.id" class="recipes">
-                <Result :recipe="recipe" />
+              <router-link :to="{ name: 'recipe', params: {type:recipe.type,id: recipe.id}}"><Result :recipe="recipe" /></router-link> 
         </span>
       </span>
       <span v-else>
@@ -32,6 +32,15 @@ export default {
       empty:false
     }
   },
+  created(){
+  if(this.$root.store.username){
+    const lastResults = localStorage.getItem(this.$root.store.username)
+    if(lastResults || lastResults.length!==0)
+    this.recipesRes=JSON.parse(lastResults)
+    else
+    this.recipesRes=[]
+  }
+  },
   methods:{
     async search(query,number,cuisine,diet,intolerances,sort)
     {
@@ -52,15 +61,21 @@ export default {
           this.sortByPopularity()
         if(sort==='on2')
           this.sortByTime()
+        console.log('abc')
+        localStorage.setItem(this.$root.store.username,JSON.stringify(this.recipesRes))  
       }
       catch(err){
-        if(err.response.data.message==="No results found")
+        if(err.response.data.message==="No results found"){
           this.empty=true
+          localStorage.setItem(this.$root.store.username,[])
+        }
       }
 
     },
     clear(){
-      this.recipesRes=[]
+     this.recipesRes=[]
+     localStorage.setItem(this.$root.store.username,[])
+     
     },
     sortByPopularity(){
       this.recipesRes.sort(function(a,b){

@@ -52,7 +52,6 @@ export default {
                 this.myRecipes=[]
                 const response = await this.axios.get("https://david-matan-recipe-api-server.herokuapp.com/api/recipes/familyrecipes",{withCredentials: true})
                 this.familyRecipes=response.data.preview;
-                console.log('asdasdad')
            }
            catch(err)
            {

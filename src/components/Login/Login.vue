@@ -78,11 +78,8 @@ export default {
         );
           this.incorrectAuth=false;
           await this.getFavoritedAndWatch(this.username)
-          // if(this.$router.currentRoute==='/')
-          //   window.location.reload()
-          // else
-          // this.$router.push('/')
-        this.$router.push(this.$route.query.redirect || '/')
+          this.$router.push(this.$route.query.redirect || '/')
+          window.location.reload()
         } 
         catch (err) {
         if(err.response.status===400)
@@ -119,9 +116,7 @@ export default {
 
 .sign-in-form{
     width: 300px;
-    margin-top:50%;
-    margin-left:5%;
-    margin:5vh auto;
+    margin:10% auto;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.6);
     background: rgba(160, 160, 160, 0.5);
     padding: 20px;
@@ -136,12 +131,12 @@ export default {
 
 .sign-in-form input
 {
-   text-align: center;
+    text-align: center;
     border-radius: 20px;
     margin-top:1rem;
     margin-left:1rem;
     padding: 7px;
-    width: 100%;
+    width: 80%;
     border: 1px solid #999;
     outline: none;
 }
@@ -149,7 +144,6 @@ export default {
 
 .signin-btn{
     color:#fff;
-    width: 200px;
     padding: 10px;
     border-radius: 20px;
     font-size:15px;

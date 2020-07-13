@@ -65,7 +65,6 @@ export default {
   },
   mounted: function()
   {
-      console.log(this.backgroundSecond)
       if(this.oldButtonFirst==='likes' || this.oldButtonSecond===10)
       {
         this.backgroundFirst='rgb(59, 189, 59)'

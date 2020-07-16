@@ -68,6 +68,8 @@ const shared_data = {
 
 axios.defaults.withCredentials = true;
 
+
+
 new Vue({
   router,
   data(){

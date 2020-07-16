@@ -27,12 +27,13 @@
         </div>
         <h3>Matan Gadasi</h3>
         <p class="role">full stack developer</p>
-        <p>My name is Matan And I am A Third year student 
-            in Information System Engineering in Ben Gurion University.
-            Ever since i remember myself i'm interested in computer and Tech.
-            In my studies i have experienced in web developing and programming languages like python and java,
-            Data analysis and Machine Learning.
-              </p>
+        <p>
+          My name is Matan And I am A Third year student
+          in Information System Engineering in Ben Gurion University.
+          Ever since i remember myself i'm interested in computer and Tech.
+          In my studies i have experienced in web developing and programming languages like python and java,
+          Data analysis and Machine Learning.
+        </p>
         <div class="logo_img">
           <img src="..\assets\logo_vue.png" alt="vue" />
           <img src="..\assets\logo_nodejs.png" alt="nodejs" />
@@ -42,19 +43,25 @@
         </div>
       </div>
     </div>
+    <div class="about-project">
+      <ProjectPreview img="pacman.png" title="Pacman|Html 5" url="https://sise-web-development-environments.github.io/assignment2-david-matan/"/>
+      <ProjectPreview img="david_ass1.png" title="David" url="https://sise-web-development-environments.github.io/203382551/"/>
+      <ProjectPreview img="matan_ass1.png" title="Matan" url="https://sise-web-development-environments.github.io/assignment1-matan230g/"/>
+    </div>
   </div>
 </template>
 
 <script>
+import ProjectPreview from '../components/About/ProjectPreview'
     export default {
-        name:'About'
-        
+        name:'About',
+        components:{ProjectPreview}
     }
 </script>
 
 <style >
 @import url("https://fonts.googleapis.com/css?family=Allura");
-@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Modak&display=swap");
 
 .wrapper {
   display: inline-block;
@@ -79,7 +86,6 @@
   width: auto;
   text-align: center;
   flex-wrap: wrap;
-
 }
 .team .team_member {
   background: #fff;
@@ -98,9 +104,9 @@
   margin-top: 50px;
 }
 .team .team_member p.role {
-  font-family: 'Modak', cursive;
+  font-family: "Modak", cursive;
   color: rgb(255, 7, 7);
-  font-size: 12px,bold;
+  font-size: 12px, bold;
   text-transform: uppercase;
   margin: 12px 0;
 }
@@ -128,5 +134,26 @@
 .team .team_member .logo_img img {
   width: 50px;
   height: 50px;
+}
+.about-wrapper .about-project .polaroid div.container {
+  text-align: center;
+  padding: 10px 20px;
+  
+}
+.about-wrapper .about-project div.polaroid {
+  cursor: pointer;
+  width: 400px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  
+
+  
+}
+.about-wrapper .about-project {
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  
 }
 </style>

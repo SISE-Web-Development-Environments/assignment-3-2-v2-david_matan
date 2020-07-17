@@ -106,7 +106,10 @@ z-index:200;
         this.$router.push('/')
         }
         catch(err){
-        console.log(err)
+        if(err.response.status===401){
+               this.$root.store.username=undefined
+               this.$router.push('/')
+             }
         }
       }
     }

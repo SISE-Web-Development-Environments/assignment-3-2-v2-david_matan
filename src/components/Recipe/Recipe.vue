@@ -82,12 +82,13 @@ export default {
                 await this.axios.put(
                 "https://david-matan-recipe-api-server.herokuapp.com/api/profiles/favorite",
                 {
-                    id:this.recipe.id
+                    id:this.recipe.id,
+                    type:this.type
                 },
                 );
                 let currentFavorites= localStorage.getItem('favorites')
                 currentFavorites=JSON.parse(currentFavorites)
-                currentFavorites.push({id:this.recipe.id})
+                currentFavorites.push({id:this.recipe.id, type:this.type})
                 localStorage.setItem('favorites',JSON.stringify(currentFavorites));
                 this.favorbtn="Already in favorites"
                 this.isInFavorite=true;

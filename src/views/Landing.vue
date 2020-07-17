@@ -1,12 +1,12 @@
 <template>
   <div >
     <div >
-          <LeftColumnIn v-if=this.$root.store.username :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
+    <LeftColumnIn v-if=this.$root.store.username :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
     <LeftColumOut  v-else :randomRecipes="randomRecipes" v-on:randomrecipes="getRandomRecipe" />
     </div>
   <div >
      <RightColumOut  v-if=!this.$root.store.username id="right_colum_out" />
-      <RightColumIn v-else :lastWatchedRecipes="lastWatchedRecipes"/>
+     <RightColumIn v-else :lastWatchedRecipes="lastWatchedRecipes"/>
   </div>
      
   </div>

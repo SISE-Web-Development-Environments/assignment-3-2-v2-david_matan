@@ -3,7 +3,7 @@
         <ul class="itemslist">
             <li><font-awesome-icon class="icons" icon="clock"/><span style="margin-left:6px">Cook:</span>{{this.recipe.readyInMinutes}} mins</li>
             <li><font-awesome-icon class="icons" icon="leaf"/><span style="margin-left:6px"> Vegetarin: </span> {{this.recipe.vegetarian}}</li>
-            <li><img style="width:20px; margin-left:17px" src="../../../assets/bread.png" alt="bread"/><span style="margin-left:6px"> Gluten:</span> {{this.recipe.glutenFree}}</li>
+            <li><div style="display:flex"><img style="width:20px; margin-left:12px" src="../../../assets/bread.png" alt="bread"/><span style="margin-left:6px"> Gluten:</span> {{this.recipe.glutenFree}}</div></li>
             <li><font-awesome-icon class="icons" icon="utensils"/> <span style="margin-left:6px"> Servings:</span> {{this.recipe.servings}}</li>
             <li><font-awesome-icon class="icons" icon="heart"/> <span style="margin-left:6px"> Likes:</span> {{this.recipe.aggregateLikes}} </li>
         </ul>

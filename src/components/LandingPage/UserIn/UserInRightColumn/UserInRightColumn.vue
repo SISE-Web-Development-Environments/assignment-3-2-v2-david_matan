@@ -55,9 +55,8 @@ export default {
     background: url('../../../../assets/2.jpg')  ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
-    height: 136.3vh;
+    height: 1032px;
 }
 
 .wrap-last-watch{
@@ -72,6 +71,7 @@ export default {
     -webkit-text-fill-color: white;
     margin-top:30%;
     font-size:55px;
+    text-align: center;
     font-family: 'Rubik', sans-serif;
 }
 
@@ -96,5 +96,6 @@ export default {
 
 .nowatch{
     margin-top:20%;
+  
 }
 </style>

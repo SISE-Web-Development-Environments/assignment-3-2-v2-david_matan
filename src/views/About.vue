@@ -27,12 +27,13 @@
         </div>
         <h3>Matan Gadasi</h3>
         <p class="role">full stack developer</p>
-        <p>My name is Matan And I am A Third year student 
-            in Information System Engineering in Ben Gurion University.
-            Ever since i remember myself i'm interested in computer and Tech.
-            In my studies i have experienced in web developing and programming languages like python and java,
-            Data analysis and Machine Learning.
-              </p>
+        <p>
+          My name is Matan And I am A Third year student
+          in Information System Engineering in Ben Gurion University.
+          Ever since i remember myself i'm interested in computer and Tech.
+          In my studies i have experienced in web developing and programming languages like python and java,
+          Data analysis and Machine Learning.
+        </p>
         <div class="logo_img">
           <img src="..\assets\logo_vue.png" alt="vue" />
           <img src="..\assets\logo_nodejs.png" alt="nodejs" />
@@ -42,20 +43,27 @@
         </div>
       </div>
     </div>
+    <div class="moreprojcts">
+        <div class="about-project">
+        <ProjectPreview img="pacman.png" title="Pacman Project" url="https://sise-web-development-environments.github.io/assignment2-david-matan/"/>
+        <ProjectPreview img="david_ass1.png" title="David`s Third age project" url="https://sise-web-development-environments.github.io/203382551/"/>
+        <ProjectPreview img="matan_ass1.png" title="Matan`s Blog" url="https://sise-web-development-environments.github.io/assignment1-matan230g/"/>
+      </div>
+      </div>
   </div>
 </template>
 
 <script>
+import ProjectPreview from '../components/ProjectPreview/ProjectPreview'
     export default {
-        name:'About'
-        
+        name:'About',
+        components:{ProjectPreview}
     }
 </script>
 
 <style >
 @import url("https://fonts.googleapis.com/css?family=Allura");
-@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Modak&display=swap");
 .wrapper {
   display: inline-block;
   align-items: center;
@@ -79,14 +87,13 @@
   width: auto;
   text-align: center;
   flex-wrap: wrap;
-
 }
 .team .team_member {
   background: #fff;
   margin: 5px;
-  margin-bottom: 50px;
-  width: 300px;
-  padding: 20px;
+  width: 400px;
+  height:400px;
+  padding: 30px;
   line-height: 20px;
   color: #8e8b8b;
   position: relative;
@@ -98,14 +105,14 @@
   margin-top: 50px;
 }
 .team .team_member p.role {
-  font-family: 'Modak', cursive;
+  font-family: "Modak", cursive;
   color: rgb(255, 7, 7);
-  font-size: 12px,bold;
+  font-size: 12px, bold;
   text-transform: uppercase;
   margin: 12px 0;
 }
 .team .team_member .team_img {
-  width: 100px;
+    width: 100px;
   height: 100px;
   border-radius: 50%;
   position: absolute;
@@ -121,12 +128,44 @@
 }
 .team .team_member .logo_img {
   display: flex;
+  position: absolute;
+  bottom: 10px;
+  left:20%;
   align-items: center;
   width: 50px;
-  height: 50px;
+  height: 40px;
 }
 .team .team_member .logo_img img {
   width: 50px;
   height: 50px;
+}
+.about-wrapper .about-project .polaroid div.container {
+  text-align: center;
+  padding: 10px 20px;
+  
+}
+
+.about-wrapper .about-project div.polaroid {
+  cursor: pointer;
+  width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+
+
+.moreprojcts{
+ position:relative;
+ left:50px;
+ border-radius: 30px;
+ height: 250px;
+ width: 90%;
+}
+.about-wrapper .about-project {
+  margin-left: 30px;
+  margin-top:30px;
+  display: flex;
+  justify-content: space-evenly;
+  
 }
 </style>

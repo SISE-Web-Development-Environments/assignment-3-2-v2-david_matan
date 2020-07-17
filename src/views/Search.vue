@@ -35,7 +35,7 @@ export default {
   created(){
   if(this.$root.store.username){
     const lastResults = localStorage.getItem(this.$root.store.username)
-    if(lastResults || lastResults.length!==0)
+    if(lastResults)
     this.recipesRes=JSON.parse(lastResults)
     else
     this.recipesRes=[]
@@ -57,11 +57,10 @@ export default {
       }
     });
        this.recipesRes=result.data;
-        if(sort==='on1')
+        if(sort==='likes')
           this.sortByPopularity()
-        if(sort==='on2')
+        if(sort==='time')
           this.sortByTime()
-        console.log('abc')
         localStorage.setItem(this.$root.store.username,JSON.stringify(this.recipesRes))  
       }
       catch(err){
@@ -79,12 +78,13 @@ export default {
     },
     sortByPopularity(){
       this.recipesRes.sort(function(a,b){
-        return parseFloat(a.likes) - parseFloat(b.likes)
+        console.log(a)
+        return parseFloat(a.aggregateLikes) - parseFloat(b.aggregateLikes)
       })
     },
     sortByTime(){
       this.recipesRes.sort(function(a,b){
-        return parseFloat(a.time) - parseFloat(b.time)
+        return parseFloat(a.readyInMinutes) - parseFloat(b.readyInMinutes)
       })
     }
   }

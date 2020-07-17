@@ -55,10 +55,15 @@ export default {
            }
            catch(err)
            {
+                if(err.response.status===404){
+                    this.familyRecipes=[]
+                    
+                }
                 if(err.response.status===401){
                     this.$root.store.username=undefined
                     this.$router.push('/login')
              }
+             console.clear()
            }
         }
     }

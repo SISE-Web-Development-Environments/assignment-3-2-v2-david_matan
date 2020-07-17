@@ -62,7 +62,7 @@ export default {
           historyWatch.push({id:this.$route.params.id, type:this.$route.params.type})
           if(!isWatched)
           localStorage.setItem("watch",JSON.stringify(historyWatch))
-    },
+      },
         ifFavoriteExists() {
           let favoritesArray=localStorage.getItem("favorites")
           favoritesArray=JSON.parse(favoritesArray)

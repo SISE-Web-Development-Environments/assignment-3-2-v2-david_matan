@@ -304,37 +304,39 @@ export default {
       sameAsPassword: sameAs("password")
     }
   },
-  methods: {async submit(){
+  methods: {
+         async submit(e) {
+         e.preventDefault()
           this.$v.$touch()
-     if (!this.$v.$invalid) {
-   try {
-        const response = await this.axios.post(
-          "https://david-matan-recipe-api-server.herokuapp.com/api/users/",
-          {
-            username: this.username,
-            password: this.password,
-            email: this.email,
-            firstname: this.firstname,
-            lastname: this.lastname,
-            country: this.country,
-            confirmpassword: this.repassword,
-            url:this.profile
-          }
-        );
-    
-        if( response.status==200){this.$router.push("/");}
-      } catch (err) {
-        if(err.response.status == 404 && err.response.data.message=="User already exists"){
-          this.usernameUnavailable=true;
-          this.$v.$touch()
+         if (!this.$v.$invalid) {
+            try {
+            await this.axios.post(
+                "https://david-matan-recipe-api-server.herokuapp.com/api/users/",
+                {
+                    username: this.username,
+                    password: this.password,
+                    email: this.email,
+                    firstname: this.firstname,
+                    lastname: this.lastname,
+                    country: this.country,
+                    confirmpassword: this.repassword,
+                    url:this.profile
+                }
+             );
+            this.$router.push("/login");
+            } 
+            catch (err) {
+            if(err.response.status == 404 && err.response.data.message=="User already exists"){
+            this.usernameUnavailable=true;
+            this.$v.$touch()
+            }
+            if (err.response.status == 404 && err.response.data.message=="Email already exists"){
+            this.emailUnavailable=true;
+            this.$v.$touch()
+            }
+            
+            console.log(err.response);
         }
-        if (err.response.status == 404 && err.response.data.message=="Email already exists"){
-           this.emailUnavailable=true;
-          this.$v.$touch()
-        }
-        
-        console.log(err.response);
-      }
   }
   }
   }

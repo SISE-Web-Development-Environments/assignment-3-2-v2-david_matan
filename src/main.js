@@ -32,6 +32,9 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
+
 // Import FontAwsome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUtensils,faSignInAlt,faUserPlus,faSearch,faClock,faHeart,faLeaf,faEye,faStar,faUser,faUserSecret,faUserEdit,faEnvelope,faImage,faGlobeAmericas,faLock,faTimes} from '@fortawesome/free-solid-svg-icons'

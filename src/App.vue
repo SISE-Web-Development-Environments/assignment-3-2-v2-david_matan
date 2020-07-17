@@ -28,12 +28,8 @@ export default {
   margin-top: 60px ;
 }
 body{
-<<<<<<< HEAD
   background: url("./assets/searchback.jpg") no-repeat center center fixed;
-=======
-  background: url("../src/assets/searchback.jpg") no-repeat center center fixed;
->>>>>>> master
-   -webkit-background-size: cover;
+ -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;

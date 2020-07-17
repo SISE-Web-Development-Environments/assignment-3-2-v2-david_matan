@@ -1,22 +1,22 @@
 <template>
-  <div>
+  <div class="recipage">
     <div class="left">
-    <div class="myrecipetitle"><h1>Your Personally Recipes</h1></div>
-    <img class="img" :src=$root.store.profilePicture alt="Avatar">
-    <div class="wrap">
-    <div >
-        <router-link to="/myfavorite"><GreenButton type="My Favorite Recipe"/></router-link>
-    </div>
-    <div>
-        <router-link to="/myfamily"><GreenButton type="My Family Recipe"/></router-link>
-    </div>
-    </div>
+        <div class="myrecipetitle"><h1>Your Personally Recipes</h1></div>
+        <img class="img" :src=$root.store.profilePicture />
+        <div class="wrap">
+            <div >
+                <router-link to="/myfavorite"><GreenButton type="My Favorite Recipe"/></router-link>
+            </div>
+            <div>
+                <router-link to="/myfamily"><GreenButton type="My Family Recipe"/></router-link>
+            </div>
+        </div>
     </div>
    <div class="right">
        <div class="results">
         <div class="results" v-if="this.myRecipes.length!==0">
         <span v-for="recipe in this.myRecipes" :key="recipe.id" class="recipes">
-              <Result :recipe="recipe" :class="{userecipesummery:true}" />
+                <router-link :to="{ name: 'recipe', params: {type:recipe.type,id: recipe.id}}"><Result :recipe="recipe" :class="{userecipesummery:true}" /></router-link>
         </span>
         </div>
         <div v-else>
@@ -57,10 +57,15 @@ export default {
            }
            catch(err)
            {
+             if(err.response.status===404){
+               this.myRecipes=[]   
+             }
+
              if(err.response.status===401){
-                 this.$root.store.username=undefined
+               this.$root.store.username=undefined
                this.$router.push('/login')
              }
+             console.clear()
            }
         }
     }
@@ -69,9 +74,13 @@ export default {
 </script>
 
 <style >
+
+.recipage{
+    display: flex;
+}
 .left{
     width: 25%;
-    float: left;
+    float:left;
     background: url('../assets/black-background.jpg') ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -85,22 +94,22 @@ export default {
 }
 .right{
     width:75%;
-    float:left;
-
+    float: left;
 }
+
 .img {
-    margin-left:10%;
     margin-top:10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 50%;
     width: 200px;
     height: 250px;
     border:2px solid white;
 }
 
-
 .wrap{
-    margin-top:2rem;
-    margin-left:2rem
+     margin-top:1rem;
 }
 
 .myrecipetitle{

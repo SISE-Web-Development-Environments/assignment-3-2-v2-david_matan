@@ -12,7 +12,6 @@ import Recipe from "./views/Recipe.vue"
 import About from "./views/About.vue"
 import CreateRecipe from "./views/CreateRecipe.vue"
 import NoPage from './views/NoPage.vue'
-import RecipePreparation from './views/RecipePreparation.vue'
 
 const routes = [
   {
@@ -65,11 +64,7 @@ const routes = [
     name: "createRecipe",
     component: CreateRecipe
   },
-  {
-    path: "/recipePre",
-    name: "recipePreparation",
-    component: RecipePreparation
-  },
+
   {
     path: '*',
     name: "NoFound",

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>instructions</h1>
         <Instruction v-for="(item,index) in recipe" :key="index" :instruction="item" />
     </div>
 </template>
@@ -8,10 +7,9 @@
 <script>
 
     import Instruction from "./Instruction";
-    // let example = require("./example.json");
     export default {
         props:{
-            id:String
+            id:String,
         },
         name:"recipePreparation",
         components:{Instruction,
@@ -35,7 +33,6 @@
           }
         },
         created() {
-      console.log('created called.');
        this.getRecipeInformation()
     },
         
@@ -43,4 +40,8 @@
 </script>
 
 <style >
+.title-instructions{
+    margin-top: 50px;
+    color: black;
+}
 </style>

@@ -15,6 +15,12 @@
                 <div>
                 <GreenButton type="Add new Recipe"/>
                 </div>
+                <div>
+                <button class="profbtn"  @click="prepareTheRecipe()">Prepare the recipe</button>
+                </div>
+                <div>
+                <button class='profbtn' @click="doubleServings()">Double the servings</button>
+                </div>
                 <span v-if="type==='family'">
                 <RecipeFamilyDetails :recipe="recipe"/>
                 </span>
@@ -28,7 +34,9 @@
           </span>
           <RecipeIngredients :ingredients="this.recipe.ingredients"/>
            <hr class="new1">
-         <RecipeInstructions :instructions="this.recipe.instructions"/>
+         <RecipeInstructions v-show="!recipePreparation" :instructions="this.recipe.instructions"/>
+         <RecipePreparation v-if ='recipePreparation' :id="recipe.id.toString()"/>
+         
       </div>
   </div>
 </template>
@@ -40,6 +48,7 @@ import RecipeInstructions from './RecipeInstructions/RecipeInstructions'
 import RecipeIngredients from './RecipeIngredients/RecipeIngredients'
 import GreenButton from '../GreenButton/GreenButton'
 import RecipeFamilyDetails from '../../components/Recipe/RecipeFamilyDetails/RecipeFamilyDetails'
+import RecipePreparation from '../Recipe/RecipePreparation/RecipePreparation'
 export default {
     name:'Recipe',
     components:{
@@ -48,11 +57,13 @@ export default {
         RecipeIngredients,
         GreenButton,
         RecipeFamilyDetails,
+        RecipePreparation
     },
     data(){
         return {
             favorbtn:"",
-            isInFavorite:this.favorites
+            isInFavorite:this.favorites,
+            recipePreparation:false,
         }
     },
     mounted(){
@@ -61,6 +72,7 @@ export default {
         else
             this.favorbtn="Add To Favorites"
     },
+  
     props:{
       recipe:{
         type:Object,
@@ -76,6 +88,17 @@ export default {
        }
     },
     methods:{
+           doubleServings(){
+            this.recipe.servings*=2;
+            this.recipe.ingredients.forEach((x) => {x.amount*=2
+            });
+
+        },
+        prepareTheRecipe(){
+            this.recipePreparation= !this.recipePreparation;
+
+            
+        },
        async addToFavorite()
         {
             try{
@@ -161,5 +184,6 @@ hr.new1 {
   font-size:17px;
   margin-left:2rem;
 }
+
 
 </style>

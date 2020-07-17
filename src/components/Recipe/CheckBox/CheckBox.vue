@@ -1,5 +1,5 @@
 <template>
-    <b-form-checkbox button-variant='danger'></b-form-checkbox>
+    <b-form-checkbox  button-variant='danger'></b-form-checkbox>
 </template>
 
 <script>

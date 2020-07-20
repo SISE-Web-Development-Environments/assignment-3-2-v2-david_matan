@@ -57,7 +57,6 @@ async function insertProfile(req,username,next)
     .input("username",sql.VarChar(10), username)
     .input("watchedRecipe",sql.VarChar('max'),[])
     .input("favoriteRecipe",sql.VarChar(4000), [])
-    .input("familyRecipe",sql.VarChar(4000), [])
     .input("lastWatched",sql.VarChar(4000), [])
     .execute("insertProfile")
     
@@ -104,7 +103,7 @@ async function insertNewFamilyRecipe(recipeDetails,id,res,username)
       .input("servings", sql.NVarChar('max'), servings)
       .input("summary", sql.NVarChar(4000), summary)
       .execute("insertFamilyRecipe").then(function (recordSet){
-      res.status(200).send({message: 'Success', sucess: 'true'})
+      res.status(200).send({message: 'Succsefully created a new recipe', sucess: 'true'})
       })  
 }
 
@@ -139,7 +138,7 @@ async function insertUserRecipe(recipeDetails,id,res,username)
       .input("servings", sql.NVarChar('max'), servings)
       .input("summary", sql.NVarChar(4000), summary)
       .execute("insertRecipe").then(function (recordSet){
-        res.status(200).send({message: 'Success', sucess: 'true'})
+        res.status(200).send({message: 'Succsefully created a new recipe', sucess: 'true'})
      })  
 }
 

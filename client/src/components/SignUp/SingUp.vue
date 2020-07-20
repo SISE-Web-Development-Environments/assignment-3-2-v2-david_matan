@@ -417,7 +417,4 @@ export default {
     left: 30px;
     
 }
-.invalid-feedback:hover{
-  font-size:28px;
-}
 </style>
